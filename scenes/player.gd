@@ -11,6 +11,11 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = move_toward(velocity.x, speed * direction.x, accel)
 		velocity.y = move_toward(velocity.y, speed * direction.y, accel)
 		
+		if velocity.x > 0 and anim_sprite.flip_h:
+			anim_sprite.flip_h = false
+		elif velocity.x < 0 and not anim_sprite.flip_h:
+			anim_sprite.flip_h = true
+		
 		move_and_slide()
 		
 #func _process(_delta: float) -> void:

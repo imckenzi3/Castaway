@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://wufr8emj5fwi"]
+
+[ext_resource type="Script" path="res://scenes/pray_stone.gd" id="1_l8jco"]
+[ext_resource type="Texture2D" uid="uid://ct06m1afu8ikp" path="res://assets/sprites/PrayStone.png" id="1_teh4s"]
+[ext_resource type="PackedScene" uid="uid://be0bd56rjbhbj" path="res://interaction/interaction area/interaction_area.tscn" id="3_wdlaq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8yek"]
+
+[node name="PrayStone" type="Node2D"]
+script = ExtResource("1_l8jco")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_teh4s")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_wdlaq")]
+action_name = "Dance for Rain Gods"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_u8yek")
