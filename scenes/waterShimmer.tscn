@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbeucc4bypb0"]
+
+[ext_resource type="Texture2D" uid="uid://dg4ctm8ud7fjn" path="res://assets/sprites/particle.png" id="1_uavbs"]
+
+[sub_resource type="Curve" id="Curve_eavai"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.19544, 1), 0.0, 0.0, 0, 0, Vector2(0.801303, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0254238), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_q3vsj"]
+curve = SubResource("Curve_eavai")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sck8a"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1000.0
+spread = 180.0
+initial_velocity_min = -5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_curve = SubResource("CurveTexture_q3vsj")
+color = Color(1, 1, 1, 0.294118)
+
+[node name="Node2D" type="GPUParticles2D"]
+amount = 938
+process_material = SubResource("ParticleProcessMaterial_sck8a")
+texture = ExtResource("1_uavbs")
