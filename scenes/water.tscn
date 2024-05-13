@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://vgegx165j4ft"]
+
+[ext_resource type="Texture2D" uid="uid://dtlgakk3h56eo" path="res://assets/sprites/water_fill.png" id="1_l5q6k"]
+[ext_resource type="Shader" path="res://scenes/distortion.gdshader" id="2_uhkfo"]
+[ext_resource type="Texture2D" uid="uid://d3vwtisw6kh32" path="res://assets/sprites/egg suit.png" id="2_xo1ki"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gxc6d"]
+light_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgsf1"]
+atlas = ExtResource("2_xo1ki")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxvin"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgsf1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_shbus"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h44kd"]
+shader = ExtResource("2_uhkfo")
+shader_parameter/speed = 0.1
+shader_parameter/strength = 0.01
+shader_parameter/noise = SubResource("NoiseTexture2D_shbus")
+shader_parameter/mask = ExtResource("1_l5q6k")
+
+[node name="water" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l5q6k")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+texture = ExtResource("1_l5q6k")
+
+[node name="Reflection" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.392157)
+light_mask = 16
+material = SubResource("CanvasItemMaterial_gxc6d")
+rotation = 3.14159
+sprite_frames = SubResource("SpriteFrames_jxvin")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_h44kd")
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0

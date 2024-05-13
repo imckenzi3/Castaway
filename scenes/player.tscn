@@ -1,30 +1,80 @@
-[gd_scene load_steps=8 format=3 uid="uid://jhhbpy6gmgnn"]
+[gd_scene load_steps=20 format=3 uid="uid://jhhbpy6gmgnn"]
 
-[ext_resource type="Texture2D" uid="uid://d3vwtisw6kh32" path="res://assets/sprites/egg suit.png" id="1_03ie7"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_swyrq"]
-[ext_resource type="Script" path="res://scripts/FSM.gd" id="3_4qmdi"]
+[ext_resource type="Script" path="res://scripts/FiniteStateMachine.gd" id="2_66cru"]
+[ext_resource type="Texture2D" uid="uid://bu5hj1cl3ogd2" path="res://assets/sprites/Crab_idle.png" id="3_chkpp"]
+[ext_resource type="Texture2D" uid="uid://clqrsyt526fel" path="res://assets/sprites/Crab_walk.png" id="4_l5ud5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g0ocg"]
-atlas = ExtResource("1_03ie7")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8plo8"]
+atlas = ExtResource("3_chkpp")
+region = Rect2(0, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ctdo6"]
-atlas = ExtResource("1_03ie7")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0f4j"]
+atlas = ExtResource("3_chkpp")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pd5a"]
+atlas = ExtResource("3_chkpp")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ynfk"]
+atlas = ExtResource("3_chkpp")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sfu4"]
+atlas = ExtResource("4_l5ud5")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iyiq"]
+atlas = ExtResource("4_l5ud5")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnu15"]
+atlas = ExtResource("4_l5ud5")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qie18"]
+atlas = ExtResource("4_l5ud5")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lrpk"]
+atlas = ExtResource("4_l5ud5")
+region = Rect2(120, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1jw8j"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g0ocg")
+"texture": SubResource("AtlasTexture_8plo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0f4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pd5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ynfk")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ctdo6")
+"texture": SubResource("AtlasTexture_3sfu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iyiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnu15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qie18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lrpk")
 }],
 "loop": true,
 "name": &"move",
@@ -34,19 +84,115 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1778l"]
 size = Vector2(12, 15)
 
+[sub_resource type="Animation" id="Animation_3tfgl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_j48yd"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_c2exp"]
+resource_name = "move"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"move"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3sabx"]
+_data = {
+"RESET": SubResource("Animation_3tfgl"),
+"idle": SubResource("Animation_j48yd"),
+"move": SubResource("Animation_c2exp")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_swyrq")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
-script = ExtResource("3_4qmdi")
+script = ExtResource("2_66cru")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(39, 386)
 sprite_frames = SubResource("SpriteFrames_1jw8j")
-animation = &"move"
 offset = Vector2(-39, -386)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_1778l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3sabx")
+}
