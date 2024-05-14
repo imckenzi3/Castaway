@@ -33,8 +33,10 @@ func _enter_state(_previous_state: int, new_state: int) -> void:
 	match new_state:
 		states.idle:
 			animation_player.play("idle")
+			animation_player2.play("idle")
 		states.move:
 			animation_player.play("move")
+			animation_player2.play("move")
 			#parent.spawn_water()
 		states.hurt:
 			animation_player.play("hurt")

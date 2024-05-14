@@ -485,7 +485,7 @@ layer_0/tile_data = PackedInt32Array(65530, 131072, 3, -65541, 262144, 2, -19660
 modulate = Color(1, 1, 1, 0.392157)
 light_mask = 16
 material = SubResource("CanvasItemMaterial_dsdax")
-position = Vector2(-1, 61)
+position = Vector2(-40, 47)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_feurc")
 
