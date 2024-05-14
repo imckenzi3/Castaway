@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://xvfh8wog0g6k"]
+
+[ext_resource type="Script" path="res://Fish.gd" id="1_fd2ci"]
+[ext_resource type="Texture2D" uid="uid://de50qtj2rq7y4" path="res://assets/sprites/world.png" id="2_8py0a"]
+[ext_resource type="PackedScene" uid="uid://be0bd56rjbhbj" path="res://interaction/interaction area/interaction_area.tscn" id="3_q7ln6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kjsr"]
+atlas = ExtResource("2_8py0a")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a8m1"]
+atlas = ExtResource("2_8py0a")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jp01k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kjsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1a8m1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2aic"]
+size = Vector2(13, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptn8u"]
+size = Vector2(15, 9)
+
+[node name="Fish" type="CharacterBody2D"]
+script = ExtResource("1_fd2ci")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jp01k")
+frame_progress = 0.444334
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_k2aic")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 16.0
+
+[node name="PathTimer" type="Timer" parent="."]
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_q7ln6")]
+action_name = "FISH!"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_ptn8u")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

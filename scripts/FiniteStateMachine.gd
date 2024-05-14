@@ -12,6 +12,9 @@ func _ready() -> void:
 func _state_logic(_delta: float) -> void:
 	if state == states.idle or state == states.move:
 		parent.move_and_slide()
+		
+	if state == states.move:
+		parent.spawn_water()
 
 func _get_transition() -> int:
 	match state:
@@ -26,13 +29,13 @@ func _get_transition() -> int:
 				return states.idle
 	return -1
 
-
 func _enter_state(_previous_state: int, new_state: int) -> void:
 	match new_state:
 		states.idle:
 			animation_player.play("idle")
 		states.move:
 			animation_player.play("move")
+			#parent.spawn_water()
 		states.hurt:
 			animation_player.play("hurt")
 			parent.cancel_attack()

@@ -19,7 +19,6 @@ initial_velocity_max = 5.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.05
 scale_curve = SubResource("CurveTexture_q3vsj")
-color = Color(1, 1, 1, 0.294118)
 
 [node name="Node2D" type="GPUParticles2D"]
 amount = 938

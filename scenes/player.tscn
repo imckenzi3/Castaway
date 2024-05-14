@@ -82,10 +82,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1778l"]
-size = Vector2(12, 15)
+size = Vector2(10, 10)
 
 [sub_resource type="Animation" id="Animation_3tfgl"]
 length = 0.001
+step = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -144,6 +145,7 @@ tracks/1/keys = {
 resource_name = "move"
 length = 0.5
 loop_mode = 1
+step = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -189,10 +191,13 @@ sprite_frames = SubResource("SpriteFrames_1jw8j")
 offset = Vector2(-39, -386)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_1778l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_3sabx")
 }
+
+[node name="TrailPosition" type="Node2D" parent="."]
+position = Vector2(0, 6)
