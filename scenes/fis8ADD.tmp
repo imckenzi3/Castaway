@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://xvfh8wog0g6k"]
+[gd_scene load_steps=21 format=3 uid="uid://xvfh8wog0g6k"]
 
 [ext_resource type="Script" path="res://Fish.gd" id="1_fd2ci"]
 [ext_resource type="Texture2D" uid="uid://de50qtj2rq7y4" path="res://assets/sprites/world.png" id="2_8py0a"]
-[ext_resource type="Script" path="res://scripts/FishFSM.gd" id="2_lb4k7"]
 [ext_resource type="PackedScene" uid="uid://be0bd56rjbhbj" path="res://interaction/interaction area/interaction_area.tscn" id="3_q7ln6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5kjsr"]
@@ -253,11 +252,9 @@ script = ExtResource("1_fd2ci")
 nav_agent = NodePath("Navigation/NavigationAgent2D")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
-script = ExtResource("2_lb4k7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jp01k")
-flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 3.5)

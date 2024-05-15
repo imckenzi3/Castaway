@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b23kc04r1p2dm"]
+[gd_scene load_steps=38 format=3 uid="uid://b23kc04r1p2dm"]
 
 [ext_resource type="PackedScene" uid="uid://jhhbpy6gmgnn" path="res://scenes/player.tscn" id="1_40psa"]
 [ext_resource type="Texture2D" uid="uid://de50qtj2rq7y4" path="res://assets/sprites/world.png" id="2_gfoxb"]
@@ -34,6 +34,13 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vxcnq"]
 shader = SubResource("Shader_he8yk")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_egnq2"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ypej0"]
 texture = ExtResource("2_gfoxb")
@@ -82,6 +89,7 @@ texture = ExtResource("2_gfoxb")
 5:1/0 = 0
 5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_egnq2")
 6:1/0 = 0
 6:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:1/0/physics_layer_0/angular_velocity = 0.0
@@ -212,7 +220,15 @@ texture = ExtResource("2_gfoxb")
 
 [sub_resource type="TileSet" id="TileSet_hb806"]
 physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
 sources/1 = SubResource("TileSetAtlasSource_ypej0")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_uhsjc"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hlabi"]
 texture = ExtResource("2_gfoxb")
@@ -261,6 +277,7 @@ texture = ExtResource("2_gfoxb")
 5:1/0 = 0
 5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_uhsjc")
 6:1/0 = 0
 6:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:1/0/physics_layer_0/angular_velocity = 0.0
@@ -385,6 +402,7 @@ texture = ExtResource("2_gfoxb")
 
 [sub_resource type="TileSet" id="TileSet_4ilyj"]
 physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_hlabi")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dsdax"]

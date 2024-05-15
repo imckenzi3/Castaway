@@ -8,6 +8,7 @@ var interact: Callable = func(): #any object with an interaction_area can overri
 
 func _on_body_entered(_body):
 	InteractionManager.register_area(self)
+	
 
 func _on_body_exited(_body):
 	InteractionManager.unregister_area(self)
