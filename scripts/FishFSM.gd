@@ -15,7 +15,7 @@ func _ready() -> void:
 func _state_logic(_delta: float) -> void:
 	if state == states.move:
 		parent.chase()
-		parent.move_and_slide()
+		#parent.move_and_slide()
 
 		
 func _get_transition() -> int:

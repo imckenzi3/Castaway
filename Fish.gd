@@ -57,9 +57,9 @@ func chase() -> void:
 func _on_path_timer_timeout():
 	if is_instance_valid(player):
 			distance_to_player = (player.position - global_position).length()
-			if distance_to_player > MAX_DISTANCE_TO_PLAYER:
-				_get_path_to_player()
-			elif distance_to_player < MIN_DISTANCE_TO_PLAYER:
+			#if distance_to_player > MAX_DISTANCE_TO_PLAYER:
+				#_get_path_to_player()
+			if distance_to_player < MIN_DISTANCE_TO_PLAYER:
 				_get_path_to_move_away_from_player()
 				
 				#if the enemy is not too close or too far away
