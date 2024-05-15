@@ -39,7 +39,12 @@ func _physics_process(delta):
 		#steering += wander_steering()
 	#else:
 		if nav_agent.is_navigation_finished():
-			
+			_cirlceSpin(1)
+			var vector_to_next_point: Vector2 = nav_agent.get_next_path_position() - global_position
+			if vector_to_next_point.x > 0 and animated_sprite.flip_h:
+				animated_sprite.flip_h = false
+			elif vector_to_next_point.x < 0 and not animated_sprite.flip_h:
+				animated_sprite.flip_h = true
 			return
 		
 		var axis = to_local(nav_agent.get_next_path_position()).normalized()
@@ -104,7 +109,7 @@ func wander_steering() -> Vector2:
 	return desired_velocity - velocity
 
 var d := 0.0
-var radius := 50
+var radius := 5
 
 func _cirlceSpin(delta: float) -> void:
 	d += delta
