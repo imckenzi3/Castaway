@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://b600163si5j3a"]
+[gd_scene load_steps=20 format=3 uid="uid://b600163si5j3a"]
 
 [ext_resource type="Script" path="res://scripts/shark.gd" id="1_3tu6u"]
 [ext_resource type="Script" path="res://scripts/FishFSM.gd" id="2_hx123"]
 [ext_resource type="Texture2D" uid="uid://c2xxr26rh5o0c" path="res://assets/sprites/shark_sprite.png" id="3_le2cq"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_n2pyf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jvjhw"]
 atlas = ExtResource("3_le2cq")
@@ -32,7 +33,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2aic"]
-size = Vector2(13, 7)
+size = Vector2(17.5, 9.5)
 
 [sub_resource type="Animation" id="Animation_3tfgl"]
 length = 0.001
@@ -154,9 +155,12 @@ radius = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_hk4ka"]
 radius = 40.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_no4dl"]
+size = Vector2(17, 9)
+
 [node name="shark" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_3tu6u")
@@ -170,7 +174,7 @@ sprite_frames = SubResource("SpriteFrames_4tumq")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 3.5)
+position = Vector2(-0.75, -0.25)
 shape = SubResource("RectangleShape2D_k2aic")
 
 [node name="Navigation" type="Node2D" parent="."]
@@ -195,6 +199,7 @@ libraries = {
 }
 
 [node name="Aggro" type="Node2D" parent="."]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="Aggro"]
 collision_layer = 0
@@ -205,11 +210,21 @@ shape = SubResource("CircleShape2D_oyrw3")
 debug_color = Color(0.996078, 0, 0.192157, 0.419608)
 
 [node name="Area2D2" type="Area2D" parent="Aggro"]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Aggro/Area2D2"]
 shape = SubResource("CircleShape2D_hk4ka")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_n2pyf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_no4dl")
 
 [connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Navigation/PathTimer" to="." method="_on_path_timer_timeout"]

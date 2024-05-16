@@ -3,6 +3,7 @@ extends Node2D
 var fish = preload("res://scenes/fish.tscn")
 var shark = preload("res://scenes/shark.tscn")
 
+
 func _init() -> void:
 	randomize()
 

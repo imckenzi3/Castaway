@@ -16,6 +16,8 @@ var distance_to_player: float
 const MAX_DISTANCE_TO_PLAYER: int = 80 #max distance to player that robot can be to player
 const MIN_DISTANCE_TO_PLAYER: int = 40 #min
 
+@onready var hitbox: Area2D = get_node("Hitbox") #var for hitbox
+
 func _ready():
 	home_pos = self.global_position
 	
@@ -26,6 +28,8 @@ func _eat_fish():
 	visible = false
 
 func _physics_process(delta):
+	hitbox.knockback_direction = velocity.normalized()
+	
 	if nav_agent.is_navigation_finished():
 		return
 	
