@@ -4,10 +4,7 @@ extends CharacterBody2D
 @export var accel = 10
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D as AnimatedSprite2D
-
-#Dust effect
 @onready var Trail_Position: Node2D = get_node("TrailPosition")
-
 const WATER_TRAIL_SCENE: PackedScene = preload("res://scenes/water_trail.tscn")
 @onready var parent: Node2D = get_parent()
 
@@ -23,7 +20,7 @@ func _physics_process(_delta: float) -> void:
 			anim_sprite.flip_h = true
 			
 		move_and_slide()
-		
+
 func spawn_water() ->void:
 	var water: Sprite2D = WATER_TRAIL_SCENE.instantiate()
 	water.position = Trail_Position.global_position

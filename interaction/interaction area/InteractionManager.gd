@@ -20,7 +20,6 @@ func unregister_area(area: InteractionArea):
 		active_areas.remove_at(index)
 
 func _process(delta): #show label that can be interacted with
-			
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.text = base_text + active_areas[0].action_name #show label above area
