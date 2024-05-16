@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b23kc04r1p2dm"]
+[gd_scene load_steps=43 format=3 uid="uid://b23kc04r1p2dm"]
 
 [ext_resource type="PackedScene" uid="uid://jhhbpy6gmgnn" path="res://scenes/player.tscn" id="1_40psa"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_j4d18"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/TileMap.gd" id="4_8umte"]
 [ext_resource type="Texture2D" uid="uid://ccsgos60nlpuh" path="res://assets/sprites/water_rising.png" id="4_uelhg"]
 [ext_resource type="Texture2D" uid="uid://bkhxqb5hfx0ws" path="res://assets/sprites/water_top.png" id="5_ov1of"]
+[ext_resource type="Script" path="res://scripts/DecorationsTiles.gd" id="6_1pb4p"]
 [ext_resource type="Texture2D" uid="uid://b67fjt8abdowm" path="res://assets/sprites/water_top_slightly_wavy.png" id="6_jfp5e"]
 [ext_resource type="Texture2D" uid="uid://dcg3261hbr083" path="res://assets/sprites/water_bottom_slightly_wavy.png" id="8_v4c8q"]
 [ext_resource type="PackedScene" uid="uid://wufr8emj5fwi" path="res://scenes/pray_stone.tscn" id="9_7i2ov"]
@@ -22,6 +23,13 @@
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_6mkbp"]
 gradient = SubResource("Gradient_w3bxf")
+
+[sub_resource type="Curve2D" id="Curve2D_vh86u"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(16.379, -3.1498, -16.379, 3.1498, -157, -101, 25, 5, 0, 0, -169, 75, 0, 0, 0, 0, 147, 76, 0, 0, 0, 0, 146, -105, 0, 0, 0, 0, -157, -101)
+}
+point_count = 5
 
 [sub_resource type="Shader" id="Shader_he8yk"]
 code = "shader_type canvas_item;
@@ -294,6 +302,9 @@ texture = ExtResource("2_gfoxb")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_4ilyj"]
 physics_layer_0/collision_layer = 1
@@ -432,7 +443,17 @@ scale = Vector2(1.12109, 160)
 range_item_cull_mask = 16
 texture = SubResource("GradientTexture1D_6mkbp")
 
+[node name="Path2D" type="Path2D" parent="Player"]
+curve = SubResource("Curve2D_vh86u")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+position = Vector2(-157, -101)
+rotation = 2.9516
+
+[node name="Marker2D" type="Marker2D" parent="Player/Path2D/PathFollow2D"]
+
 [node name="island" type="TileMap" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_vxcnq")
 tile_set = SubResource("TileSet_hb806")
 format = 2
@@ -443,6 +464,7 @@ script = ExtResource("4_8umte")
 tile_set = SubResource("TileSet_4ilyj")
 format = 2
 layer_0/tile_data = PackedInt32Array(65530, 131072, 3, -65541, 262144, 2, -196601, 262144, 2, -8, 262144, 2, 65532, 262144, 2, 65543, 262144, 2, -131067, 196608, 2)
+script = ExtResource("6_1pb4p")
 
 [node name="Reflection" type="AnimatedSprite2D" parent="Decorations"]
 modulate = Color(1, 1, 1, 0.392157)
@@ -476,3 +498,8 @@ scale = Vector2(4.56, 5.032)
 
 [node name="PrayStone" parent="." instance=ExtResource("9_7i2ov")]
 position = Vector2(-8, -18)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

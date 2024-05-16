@@ -16,6 +16,12 @@ var height = 64
 # List to keep track of loaded chunks
 var loaded_chunks = []
 
+var tiles = {}
+
+var biome =  {}
+var biome_data = {
+	"ocean":{"water": 1}
+}
 func _ready():
 	# Set random seeds for noise variation
 	moisture.seed = randi()
@@ -81,3 +87,5 @@ func clear_chunk(pos):
 func get_dist(p1, p2):
 	var resultant = p1 - p2
 	return sqrt(resultant.x ** 2 + resultant.y ** 2)
+
+
