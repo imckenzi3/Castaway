@@ -15,7 +15,7 @@ func _ready() -> void:
 func _state_logic(_delta: float) -> void:
 	if state == states.move:
 		parent.chase()
-		#parent.wander_steering()
+		#parent.move()
 
 		
 func _get_transition() -> int:

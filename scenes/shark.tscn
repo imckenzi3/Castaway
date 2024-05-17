@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b600163si5j3a"]
+[gd_scene load_steps=18 format=3 uid="uid://b600163si5j3a"]
 
 [ext_resource type="Script" path="res://scripts/shark.gd" id="1_3tu6u"]
 [ext_resource type="Script" path="res://scripts/FishFSM.gd" id="2_hx123"]
@@ -149,12 +149,6 @@ _data = {
 "move": SubResource("Animation_m8ej3")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oyrw3"]
-radius = 20.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hk4ka"]
-radius = 40.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_no4dl"]
 size = Vector2(17, 9)
 
@@ -170,6 +164,7 @@ nav_agent = NodePath("Navigation/NavigationAgent2D")
 script = ExtResource("2_hx123")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_4tumq")
 flip_h = true
 
@@ -198,25 +193,6 @@ libraries = {
 "": SubResource("AnimationLibrary_vbvc5")
 }
 
-[node name="Aggro" type="Node2D" parent="."]
-visible = false
-
-[node name="Area2D" type="Area2D" parent="Aggro"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Aggro/Area2D"]
-shape = SubResource("CircleShape2D_oyrw3")
-debug_color = Color(0.996078, 0, 0.192157, 0.419608)
-
-[node name="Area2D2" type="Area2D" parent="Aggro"]
-visible = false
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Aggro/Area2D2"]
-shape = SubResource("CircleShape2D_hk4ka")
-
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -228,5 +204,3 @@ shape = SubResource("RectangleShape2D_no4dl")
 
 [connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Navigation/PathTimer" to="." method="_on_path_timer_timeout"]
-[connection signal="area_entered" from="Aggro/Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="Aggro/Area2D2" to="." method="_on_area_2d_2_area_exited"]

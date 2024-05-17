@@ -18,7 +18,6 @@ func _on_timer_timeout():
 	instance.global_position = $Player/Path2D/PathFollow2D/Marker2D.global_position
 	add_child(instance)
 
-
 func _on_timer_2_timeout():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()

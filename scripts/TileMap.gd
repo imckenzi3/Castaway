@@ -7,8 +7,8 @@ var temperature = FastNoiseLite.new()
 var altitude = FastNoiseLite.new()
 
 # Dimensions of each generated chunk
-var width = 64
-var height = 64
+var width = 32
+var height = 32
 
 # Reference to the player character
 @onready var player = get_parent().get_node("Player")

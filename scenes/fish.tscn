@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://xvfh8wog0g6k"]
 
-[ext_resource type="Script" path="res://Fish.gd" id="1_fd2ci"]
+[ext_resource type="Script" path="res://scripts/Fish.gd" id="1_4woua"]
 [ext_resource type="Texture2D" uid="uid://de50qtj2rq7y4" path="res://assets/sprites/world.png" id="2_8py0a"]
 [ext_resource type="Script" path="res://scripts/FishFSM.gd" id="2_lb4k7"]
 [ext_resource type="PackedScene" uid="uid://be0bd56rjbhbj" path="res://interaction/interaction area/interaction_area.tscn" id="3_q7ln6"]
@@ -50,7 +50,7 @@ animations = [{
 size = Vector2(13, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptn8u"]
-size = Vector2(15, 9)
+size = Vector2(23, 16)
 
 [sub_resource type="Animation" id="Animation_3tfgl"]
 length = 0.001
@@ -173,11 +173,12 @@ radius = 20.0
 radius = 40.0
 
 [node name="Fish" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+z_index = 2
 collision_layer = 4
-collision_mask = 7
+collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_fd2ci")
+script = ExtResource("1_4woua")
 nav_agent = NodePath("Navigation/NavigationAgent2D")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
@@ -203,10 +204,11 @@ wait_time = 0.2
 autostart = true
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_q7ln6")]
+z_index = 2
 action_name = "FISH!"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(0.5, 3.5)
+position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_ptn8u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

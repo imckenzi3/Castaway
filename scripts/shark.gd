@@ -18,17 +18,33 @@ const MIN_DISTANCE_TO_PLAYER: int = 40 #min
 
 @onready var hitbox: Area2D = get_node("Hitbox") #var for hitbox
 
+var randomNum
+var target
+
+enum {
+	SURROUND,
+	ATTACK
+}
+
+var state = SURROUND
+
 func _ready():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	randomNum = rng.randf()
+	
 	home_pos = self.global_position
 	
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
 	
-func _eat_fish():
-	visible = false
 
 func _physics_process(delta):
-	hitbox.knockback_direction = velocity.normalized()
+	match state:
+		SURROUND:
+			move(get_circle_position(randomNum), delta)
+			
+	hitbox.knockback_direction = velocity.normalized() #knock back
 	
 	if nav_agent.is_navigation_finished():
 		return
@@ -55,34 +71,29 @@ func chase() -> void:
 			animated_sprite.flip_h = false
 		elif vector_to_next_point.x < 0 and not animated_sprite.flip_h:
 			animated_sprite.flip_h = true
+			
+func move(target, delta) -> void:
+	var direction = (target - global_position).normalized()
+	var desired_velocity = direction * speed
+	var steering = (desired_velocity - velocity) * delta * 2.5
+	velocity += steering
 
 func _on_path_timer_timeout():
 	if is_instance_valid(player):
 			distance_to_player = (player.position - global_position).length()
 			if distance_to_player > MAX_DISTANCE_TO_PLAYER:
 				_get_path_to_player()
-			#if distance_to_player < MIN_DISTANCE_TO_PLAYER:
-				#_get_path_to_move_away_from_player()
-				
-				#if the enemy is not too close or too far away
-				#check if can_attack is true
 	else:
 		move_direction = Vector2.ZERO
-
-#move away from player
-func _get_path_to_move_away_from_player() -> void:
-	var dir: Vector2 = (global_position - player.position).normalized()
-	nav_agent.target_position = global_position + dir * 100
 	
-func _get_path_to_player() -> void:
-	nav_agent.target_position = player.position 
+func _get_path_to_player() -> void: 
+	nav_agent.target_position = player.position #path to player
 
-#player entered
-func _on_area_2d_area_entered(area):
-	target_node = area.owner
-	#
-#player exited
-func _on_area_2d_2_area_exited(area):
-	if area.owner == target_node:
-		target_node = null
-
+func get_circle_position(random):
+	var kill_circle_centre = player.global_position
+	var radius = 40 #Distance from center to circumference of circle
+	var angle = random * PI * 2;
+	var x = kill_circle_centre.x + cos(angle) * radius;
+	var y = kill_circle_centre.y + sin(angle) * radius;
+	
+	return Vector2(x,y)
