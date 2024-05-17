@@ -68,6 +68,7 @@ _data = {
 }
 
 [node name="waterTrail" type="Sprite2D"]
+z_index = 1
 texture = ExtResource("1_v1gu3")
 script = ExtResource("2_gvupm")
 

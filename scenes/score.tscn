@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccgn0fnpse3qw"]
+
+[ext_resource type="Script" path="res://scripts/Global.gd" id="1_dcwc1"]
+[ext_resource type="Script" path="res://scripts/pray_stone.gd" id="2_527mt"]
+[ext_resource type="Texture2D" uid="uid://de50qtj2rq7y4" path="res://assets/sprites/world.png" id="3_iv5fx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pmns"]
+atlas = ExtResource("3_iv5fx")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwr8t"]
+atlas = ExtResource("3_iv5fx")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gh3vv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pmns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwr8t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Score" type="Node2D"]
+z_index = 1
+script = ExtResource("1_dcwc1")
+
+[node name="Score" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_527mt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9, 10)
+sprite_frames = SubResource("SpriteFrames_gh3vv")

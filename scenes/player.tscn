@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://jhhbpy6gmgnn"]
+[gd_scene load_steps=44 format=3 uid="uid://jhhbpy6gmgnn"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_swyrq"]
 [ext_resource type="Script" path="res://scripts/FiniteStateMachine.gd" id="2_66cru"]
 [ext_resource type="Texture2D" uid="uid://bu5hj1cl3ogd2" path="res://assets/sprites/Crab_idle.png" id="3_chkpp"]
+[ext_resource type="Texture2D" uid="uid://ydixsy4iny4h" path="res://assets/sprites/Crab_eat.png" id="4_2ilyk"]
 [ext_resource type="Texture2D" uid="uid://clqrsyt526fel" path="res://assets/sprites/Crab_walk.png" id="4_l5ud5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8plo8"]
@@ -19,6 +20,22 @@ region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ynfk"]
 atlas = ExtResource("3_chkpp")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af4vn"]
+atlas = ExtResource("4_2ilyk")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmgar"]
+atlas = ExtResource("4_2ilyk")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxlx6"]
+atlas = ExtResource("4_2ilyk")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y145u"]
+atlas = ExtResource("4_2ilyk")
 region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3sfu4"]
@@ -60,9 +77,21 @@ animations = [{
 "name": &"default",
 "speed": 4.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af4vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmgar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxlx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y145u")
+}],
 "loop": true,
-"name": &"hurt",
+"name": &"eat",
 "speed": 5.0
 }, {
 "frames": [{
@@ -119,6 +148,34 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_homke"]
 resource_name = "dead"
+
+[sub_resource type="Animation" id="Animation_brexq"]
+resource_name = "eat"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"eat"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
 [sub_resource type="Animation" id="Animation_bbr0t"]
 resource_name = "hurt"
@@ -223,6 +280,7 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_3tfgl"),
 "dead": SubResource("Animation_homke"),
+"eat": SubResource("Animation_brexq"),
 "hurt": SubResource("Animation_bbr0t"),
 "idle": SubResource("Animation_j48yd"),
 "move": SubResource("Animation_c2exp")

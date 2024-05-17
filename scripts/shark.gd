@@ -84,7 +84,7 @@ func _on_path_timer_timeout():
 			if distance_to_player > MAX_DISTANCE_TO_PLAYER:
 				_get_path_to_player()
 	else:
-		move_direction = Vector2.ZERO
+		get_circle_position(randomNum)
 	
 func _get_path_to_player() -> void: 
 	nav_agent.target_position = player.position #path to player

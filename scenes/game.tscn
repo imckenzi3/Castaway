@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://b23kc04r1p2dm"]
+[gd_scene load_steps=41 format=3 uid="uid://b23kc04r1p2dm"]
 
 [ext_resource type="PackedScene" uid="uid://jhhbpy6gmgnn" path="res://scenes/player.tscn" id="1_40psa"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_j4d18"]
@@ -6,8 +6,8 @@
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="3_djsdj"]
 [ext_resource type="Texture2D" uid="uid://dtlgakk3h56eo" path="res://assets/sprites/water_fill.png" id="3_nwynu"]
 [ext_resource type="Texture2D" uid="uid://bu5hj1cl3ogd2" path="res://assets/sprites/Crab_idle.png" id="3_u7en5"]
-[ext_resource type="Script" path="res://scripts/TileMap.gd" id="4_8umte"]
 [ext_resource type="Texture2D" uid="uid://ccsgos60nlpuh" path="res://assets/sprites/water_rising.png" id="4_uelhg"]
+[ext_resource type="Script" path="res://scripts/TileMap.gd" id="5_kmj1j"]
 [ext_resource type="Texture2D" uid="uid://bkhxqb5hfx0ws" path="res://assets/sprites/water_top.png" id="5_ov1of"]
 [ext_resource type="Texture2D" uid="uid://b67fjt8abdowm" path="res://assets/sprites/water_top_slightly_wavy.png" id="6_jfp5e"]
 [ext_resource type="Texture2D" uid="uid://dcg3261hbr083" path="res://assets/sprites/water_bottom_slightly_wavy.png" id="8_v4c8q"]
@@ -15,10 +15,7 @@
 [ext_resource type="Shader" path="res://scenes/distortion.gdshader" id="10_6oyje"]
 [ext_resource type="PackedScene" uid="uid://cbeucc4bypb0" path="res://scenes/waterShimmer.tscn" id="13_raw8m"]
 [ext_resource type="Script" path="res://scripts/waterTileMap.gd" id="14_m42r5"]
-[ext_resource type="Script" path="res://Gaea-main/addons/gaea/generators/2D/walker_generator/walker_generator.gd" id="18_m4p6l"]
-[ext_resource type="Script" path="res://Gaea-main/addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="18_r6sta"]
-[ext_resource type="Script" path="res://Gaea-main/addons/gaea/generators/2D/walker_generator/walker_generator_settings.gd" id="19_3iufd"]
-[ext_resource type="Script" path="res://Gaea-main/addons/gaea/tile_info/tilemap_tile_info.gd" id="20_kyyta"]
+[ext_resource type="PackedScene" uid="uid://ccgn0fnpse3qw" path="res://scenes/score.tscn" id="16_xy7kj"]
 
 [sub_resource type="Gradient" id="Gradient_w3bxf"]
 
@@ -131,6 +128,14 @@ texture = ExtResource("2_gfoxb")
 5:1/0/terrain = 1
 5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/terrains_peering_bit/right_side = 1
+5:1/0/terrains_peering_bit/bottom_right_corner = 1
+5:1/0/terrains_peering_bit/bottom_side = 1
+5:1/0/terrains_peering_bit/bottom_left_corner = 1
+5:1/0/terrains_peering_bit/left_side = 1
+5:1/0/terrains_peering_bit/top_left_corner = 1
+5:1/0/terrains_peering_bit/top_side = 1
+5:1/0/terrains_peering_bit/top_right_corner = 1
 5:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_egnq2")
 6:1/0 = 0
 6:1/0/terrain_set = 0
@@ -185,12 +190,10 @@ texture = ExtResource("2_gfoxb")
 2:2/0/terrains_peering_bit/top_left_corner = 0
 3:2/0 = 0
 3:2/0/terrain_set = 0
-3:2/0/terrain = 1
 3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:2/0/physics_layer_0/angular_velocity = 0.0
 4:2/0 = 0
 4:2/0/terrain_set = 0
-4:2/0/terrain = 1
 4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:2/0/physics_layer_0/angular_velocity = 0.0
 5:2/0 = 0
@@ -211,7 +214,6 @@ texture = ExtResource("2_gfoxb")
 0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:3/0 = 0
 2:3/0/terrain_set = 0
-2:3/0/terrain = 1
 2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:3/0/physics_layer_0/angular_velocity = 0.0
 3:3/0 = 0
@@ -266,15 +268,17 @@ texture = ExtResource("2_gfoxb")
 1:5/0/terrain_set = 0
 1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:5/0/physics_layer_0/angular_velocity = 0.0
+1:5/0/terrains_peering_bit/right_side = 0
 1:5/0/terrains_peering_bit/bottom_right_corner = 0
-1:5/0/terrains_peering_bit/bottom_left_corner = 0
+1:5/0/terrains_peering_bit/bottom_side = 0
 1:5/0/terrains_peering_bit/top_right_corner = 0
 2:5/0 = 0
 2:5/0/terrain_set = 0
 2:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:5/0/physics_layer_0/angular_velocity = 0.0
-2:5/0/terrains_peering_bit/bottom_right_corner = 0
+2:5/0/terrains_peering_bit/bottom_side = 0
 2:5/0/terrains_peering_bit/bottom_left_corner = 0
+2:5/0/terrains_peering_bit/left_side = 0
 2:5/0/terrains_peering_bit/top_left_corner = 0
 2:4/0 = 0
 2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -426,33 +430,6 @@ shader = ExtResource("10_6oyje")
 shader_parameter/speed = 0.1
 shader_parameter/strength = 0.05
 
-[sub_resource type="Resource" id="Resource_jeoxc"]
-script = ExtResource("20_kyyta")
-type = 1
-tilemap_layer = 0
-terrain_set = 0
-terrain = 0
-id = ""
-layer = 0
-
-[sub_resource type="Resource" id="Resource_i4jd0"]
-resource_name = "Settings"
-script = ExtResource("19_3iufd")
-tile = SubResource("Resource_jeoxc")
-fullness_check = 1
-fullness_percentage = 0.2
-constrain_world_size = true
-world_size = Vector2i(30, 30)
-max_walkers = 5
-new_dir_chance = 0.5
-new_walker_chance = 0.05
-destroy_walker_chance = 0.05
-room_chances = {
-Vector2i(2, 2): 0.5,
-Vector2i(3, 3): 0.1
-}
-modifiers = Array[Resource("res://Gaea-main/addons/gaea/modifiers/2D/modifier_2d.gd")]([])
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_j4d18")
 
@@ -475,7 +452,6 @@ range_item_cull_mask = 16
 texture = SubResource("GradientTexture1D_6mkbp")
 
 [node name="Path2D" type="Path2D" parent="Player"]
-visible = false
 position = Vector2(-0.930374, -6.71823)
 scale = Vector2(1.00633, 1.0884)
 curve = SubResource("Curve2D_vh86u")
@@ -497,17 +473,17 @@ rotation = 2.9516
 
 [node name="Marker2D" type="Marker2D" parent="Player/SharkPath2D/PathFollow2D"]
 
+[node name="Score" parent="Player" instance=ExtResource("16_xy7kj")]
+position = Vector2(-146, -92)
+
 [node name="island" type="TileMap" parent="."]
-z_index = 2
 material = SubResource("ShaderMaterial_vxcnq")
-position = Vector2(1, 0)
 tile_set = SubResource("TileSet_hb806")
 format = 2
 layer_0/tile_data = PackedInt32Array(65534, 1, 1, 131070, 1, 1, 196606, 1, 2, 65535, 65537, 1, 131071, 65537, 1, 196607, 65537, 2, 0, 196609, 1, 65536, 65537, 1, 131072, 65537, 2, 131073, 65537, 2, 131074, 131073, 2, 65538, 131073, 1, 65537, 65537, 1, 1, 262145, 1, 2, 131073, 1, -131070, 131073, 0, -131071, 65537, 0, -131072, 65537, 0, -65537, 65537, 0, -65538, 1, 0, -2, 1, 1, -65534, 131073, 1, -65535, 262145, 0, -65536, 196609, 0, -1, 65537, 1, -262140, 327681, 0, 131076, 327681, 0, -65530, 327681, 2, 196615, 327681, 2, 196602, 327681, 2, -196612, 327681, 2, 262135, 327681, 1, 327671, 327681, 1, 262136, 327681, 1, 327672, 327681, 1, 262137, 327681, 1, 327673, 327681, 1, 262138, 327681, 1, 327674, 327681, 1, 262139, 327681, 1, 327675, 327681, 1, 262140, 327681, 1, 327676, 327681, 1, 262141, 327681, 1, 327677, 327681, 1, 262142, 327681, 1, 327678, 327681, 1, 262143, 327681, 1, 327679, 327681, 1, 262144, 327681, 1, 196609, 327681, 1, 262145, 327681, 1, 196610, 327681, 1, 262146, 327681, 1, 196611, 327681, 1, 262147, 327681, 1, 196612, 327681, 1, 262148, 327681, 1, 196613, 327681, 1, 262149, 327681, 1, 196614, 327681, 1, 262150, 327681, 1, 262151, 327681, 1, 262152, 327681, 1, 65544, 327681, 1, 131080, 327681, 1, 196616, 327681, 1, 131078, 327681, 1, 131079, 327681, 1, 65542, 327681, 1, 65543, 327681, 1, -262139, 327681, 1, -196603, 327681, 1, -131067, 327681, 1, -65531, 327681, 1, 5, 327681, 1, 65541, 327681, 1, 131077, 327681, 1, -262138, 327681, 1, -196602, 327681, 1, -131066, 327681, 1, -262137, 327681, 1, -196601, 327681, 1, -131065, 327681, 1, -262136, 327681, 1, -196600, 327681, 1, -131064, 327681, 1, -65529, 327681, 1, 7, 327681, 1, -65528, 327681, 1, 8, 327681, 1, 6, 327681, 1, 131063, 327681, 1, 131064, 327681, 1, 131065, 327681, 1, 131066, 327681, 1, 196600, 327681, 1, 196601, 327681, 1, 196599, 327681, 1, 131067, 327681, 1, 131068, 327681, 1, 196604, 327681, 1, 196605, 327681, 1, 131069, 327681, 1, -196610, 327681, 1, -131074, 327681, 1, -196609, 327681, 1, -131073, 327681, 1, -262144, 327681, 1, -196608, 327681, 1, -196607, 327681, 1, -196606, 327681, 1, -262141, 327681, 1, -196605, 327681, 1, -196604, 327681, 1, -131069, 327681, 1, -65533, 327681, 1, 3, 327681, 1, 65539, 327681, 1, -131068, 327681, 1, -65532, 327681, 1, 4, 327681, 1, 65540, 327681, 1, 131075, 327681, 1, 196603, 327681, 0, -262142, 327681, 1, -262143, 327681, 1, -327680, 327681, 1, -327679, 327681, 1, -327678, 327681, 1, -327677, 327681, 1, -327676, 327681, 1, -327675, 327681, 1, -327674, 327681, 1, -327673, 327681, 1, -327672, 327681, 1, -131079, 327681, 0, -262145, 327681, 1, 65527, 327681, 1, 65528, 327681, 1, 65529, 327681, 1, 65530, 327681, 1, 65531, 327681, 1, 65532, 327681, 1, 65533, 327681, 1, -3, 327681, 1, -4, 327681, 1, -5, 327681, 1, -6, 327681, 1, -7, 327681, 1, -8, 327681, 1, -9, 327681, 1, -65545, 327681, 1, -65544, 327681, 1, -65543, 327681, 1, -65542, 327681, 1, -65541, 327681, 1, -65540, 327681, 1, -65539, 327681, 1, -131075, 327681, 1, -131076, 327681, 1, -131077, 327681, 1, -131078, 327681, 1, -196614, 327681, 1, -196613, 327681, 1, -262149, 327681, 1, -262150, 327681, 1, -262151, 327681, 1, -262152, 327681, 1, -196617, 327681, 1, -131081, 327681, 1, -131080, 327681, 1, -196616, 327681, 1, -262153, 327681, 1, -196615, 327681, 1, -262148, 327681, 1, -262147, 327681, 1, -262146, 327681, 1, -196611, 327681, 1, 196608, 327681, 1)
-script = ExtResource("4_8umte")
+script = ExtResource("5_kmj1j")
 
 [node name="Decorations" type="TileMap" parent="."]
-z_index = 2
 tile_set = SubResource("TileSet_4ilyj")
 format = 2
 layer_0/tile_data = PackedInt32Array(65530, 131072, 3, -65541, 262144, 2, -196601, 262144, 2, -8, 262144, 2, 65532, 262144, 2, 65543, 262144, 2, -131067, 196608, 2, 3, 262144, 2, 65541, 262144, 2)
@@ -521,7 +497,7 @@ rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_feurc")
 
 [node name="water" type="TileMap" parent="."]
-z_index = 2
+z_index = 1
 material = SubResource("ShaderMaterial_a3hw0")
 tile_set = SubResource("TileSet_mpqs5")
 format = 2
@@ -547,15 +523,6 @@ autostart = true
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
-
-[node name="TilemapGaeaRenderer" type="Node" parent="." node_paths=PackedStringArray("tile_map", "generator")]
-script = ExtResource("18_r6sta")
-tile_map = NodePath("../island")
-generator = NodePath("../WalkerGenerator")
-
-[node name="WalkerGenerator" type="Node" parent="."]
-script = ExtResource("18_m4p6l")
-settings = SubResource("Resource_i4jd0")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

@@ -153,8 +153,8 @@ _data = {
 size = Vector2(17, 9)
 
 [node name="shark" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+z_index = -1
 collision_layer = 4
-collision_mask = 5
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_3tu6u")
@@ -164,7 +164,7 @@ nav_agent = NodePath("Navigation/NavigationAgent2D")
 script = ExtResource("2_hx123")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 2
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_4tumq")
 flip_h = true
 

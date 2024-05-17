@@ -32,7 +32,6 @@ func spawn_water() ->void:
 	
 func take_damage(dam: int, dir: Vector2, force: int) -> void:
 	if state_machine.state != state_machine.states.hurt and state_machine.state != state_machine.states.dead:
-		
 		#_spawn_hit_effect() #hit effect
 		self.hp -= dam #subtracte hp based on damage
 		frameFreeze(0.1, 0.4) #free frame (time scale, duration)

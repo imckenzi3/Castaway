@@ -30,7 +30,8 @@ func _ready():
 	nav_agent.target_desired_distance = 4
 	
 func _eat_fish():
-	visible = false
+	self.queue_free() #deletes fish
+	Global.fish += 1
 
 func _physics_process(delta):
 	#var steering: Vector2 = Vector2.ZERO
@@ -79,7 +80,7 @@ func _on_path_timer_timeout():
 			if distance_to_player < MIN_DISTANCE_TO_PLAYER:
 				_get_path_to_move_away_from_player()
 				_eat_fish() #eats fish when player gets on top
-							
+				
 							#play player eating animation
 				
 				#if the enemy is not too close or too far away
