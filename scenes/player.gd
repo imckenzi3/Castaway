@@ -67,3 +67,4 @@ func set_hp(new_hp: int) -> void:
 	hp = new_hp
 	emit_signal("hp_changed", new_hp)
 	
+

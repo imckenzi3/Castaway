@@ -1,18 +1,15 @@
-[gd_scene load_steps=41 format=3 uid="uid://b23kc04r1p2dm"]
+[gd_scene load_steps=34 format=3 uid="uid://b23kc04r1p2dm"]
 
 [ext_resource type="PackedScene" uid="uid://jhhbpy6gmgnn" path="res://scenes/player.tscn" id="1_40psa"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_j4d18"]
 [ext_resource type="Texture2D" uid="uid://de50qtj2rq7y4" path="res://assets/sprites/world.png" id="2_gfoxb"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="3_djsdj"]
 [ext_resource type="Texture2D" uid="uid://dtlgakk3h56eo" path="res://assets/sprites/water_fill.png" id="3_nwynu"]
-[ext_resource type="Texture2D" uid="uid://bu5hj1cl3ogd2" path="res://assets/sprites/Crab_idle.png" id="3_u7en5"]
 [ext_resource type="Texture2D" uid="uid://ccsgos60nlpuh" path="res://assets/sprites/water_rising.png" id="4_uelhg"]
 [ext_resource type="Script" path="res://scripts/TileMap.gd" id="5_kmj1j"]
 [ext_resource type="Texture2D" uid="uid://bkhxqb5hfx0ws" path="res://assets/sprites/water_top.png" id="5_ov1of"]
 [ext_resource type="Texture2D" uid="uid://b67fjt8abdowm" path="res://assets/sprites/water_top_slightly_wavy.png" id="6_jfp5e"]
 [ext_resource type="Texture2D" uid="uid://dcg3261hbr083" path="res://assets/sprites/water_bottom_slightly_wavy.png" id="8_v4c8q"]
-[ext_resource type="PackedScene" uid="uid://wufr8emj5fwi" path="res://scenes/pray_stone.tscn" id="9_7i2ov"]
-[ext_resource type="Shader" path="res://scenes/distortion.gdshader" id="10_6oyje"]
 [ext_resource type="PackedScene" uid="uid://cbeucc4bypb0" path="res://scenes/waterShimmer.tscn" id="13_raw8m"]
 [ext_resource type="Script" path="res://scripts/waterTileMap.gd" id="14_m42r5"]
 [ext_resource type="PackedScene" uid="uid://ccgn0fnpse3qw" path="res://scenes/score.tscn" id="16_xy7kj"]
@@ -319,24 +316,6 @@ physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_hlabi")
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dsdax"]
-light_mode = 2
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5sj4"]
-atlas = ExtResource("3_u7en5")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_feurc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b5sj4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8jbqe"]
 frequency = 0.001
 
@@ -425,11 +404,6 @@ sources/3 = SubResource("TileSetAtlasSource_2f1j0")
 sources/4 = SubResource("TileSetAtlasSource_xe7ks")
 sources/6 = SubResource("TileSetAtlasSource_i6qnq")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4jg0p"]
-shader = ExtResource("10_6oyje")
-shader_parameter/speed = 0.1
-shader_parameter/strength = 0.05
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_j4d18")
 
@@ -488,14 +462,6 @@ tile_set = SubResource("TileSet_4ilyj")
 format = 2
 layer_0/tile_data = PackedInt32Array(65530, 131072, 3, -65541, 262144, 2, -196601, 262144, 2, -8, 262144, 2, 65532, 262144, 2, 65543, 262144, 2, -131067, 196608, 2, 3, 262144, 2, 65541, 262144, 2)
 
-[node name="Reflection" type="AnimatedSprite2D" parent="Decorations"]
-modulate = Color(1, 1, 1, 0.392157)
-light_mask = 16
-material = SubResource("CanvasItemMaterial_dsdax")
-position = Vector2(-40, 47)
-rotation = 3.14159
-sprite_frames = SubResource("SpriteFrames_feurc")
-
 [node name="water" type="TileMap" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_a3hw0")
@@ -503,18 +469,6 @@ tile_set = SubResource("TileSet_mpqs5")
 format = 2
 layer_0/tile_data = PackedInt32Array(327671, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262135, 0, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 196612, 0, 0, 196613, 0, 0, -262136, 0, 0, -196600, 0, 0, -131064, 0, 0, -65528, 0, 0, 8, 0, 0, 65544, 0, 0, 131080, 0, 0, 196616, 0, 0, -262149, 0, 0, -262147, 0, 0, -262146, 0, 0, -262145, 0, 0, -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0, -327676, 0, 0, -327675, 0, 0, -327674, 0, 0, -327673, 0, 0, -327672, 0, 0, -131081, 0, 0, -65545, 0, 0, -9, 0, 0, 196599, 0, 0, -131080, 0, 0, -196614, 0, 0, -131078, 0, 0, -131077, 0, 0, -131076, 0, 0, -7, 0, 0, 65529, 0, 0, 131065, 0, 0, -65542, 0, 0, -6, 0, 0, 65530, 0, 0, -65541, 0, 0, -5, 0, 0, 65531, 0, 0, -65540, 0, 0, -4, 0, 0, 196604, 0, 0, 196605, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262139, 0, 0, -196603, 0, 0, -262138, 0, 0, -196602, 0, 0, -262137, 0, 0, -196601, 0, 0, -262141, 0, 0, -196604, 0, 0, -131068, 0, 0, -65532, 0, 0, 4, 0, 0, 65540, 0, 0, -131067, 0, 0, 5, 0, 0, 65541, 0, 0, 131077, 0, 0, 6, 0, 0, 65542, 0, 0, 131078, 0, 0, 7, 0, 0, 65543, 0, 0, -131065, 0, 0, -65529, 0, 0, 196607, 3, 0, 131072, 3, 0, 131073, 3, 0, 131074, 1, 0, 196606, 1, 268435456, 131070, 3, 1879048192, 65534, 3, 1879048192, 65538, 3, 1610612736, 2, 3, 1610612736, -65534, 3, 1610612736, -131070, 3, 1610612736, -65538, 3, 1879048192, 196602, 4, 0, 196615, 4, 0, -65530, 4, 0, -196612, 4, 0, -262153, 0, 0, -262152, 0, 0, -262151, 0, 0, -262150, 0, 0, -196615, 0, 0, -196616, 0, 0, -196617, 0, 0, 131069, 0, 0, 131068, 0, 0, 131067, 0, 0, 65532, 0, 0, 65533, 0, 0, -65539, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -131069, 0, 0, -65533, 0, 0, 3, 0, 0, 65539, 0, 0, 131075, 0, 0, 196611, 0, 0, 196610, 0, 0, 196609, 0, 0, 196608, 0, 0, 262143, 0, 0, 262142, 0, 0, 262141, 0, 0, -2, 3, 1879048192, -3, 0, 0, 131063, 0, 0, 131064, 0, 0, 196600, 0, 0, 196601, 0, 0, 131066, 0, 0, 196603, 0, 0, -131079, 0, 0, -262148, 0, 0, -196613, 0, 0, -262143, 0, 0, -262142, 0, 0, 131076, 0, 0, 196614, 0, 0, 131079, 0, 0, -131066, 0, 0, -65531, 0, 0, -262140, 0, 0, -65543, 0, 0, -65544, 0, 0, -8, 0, 0, 65528, 0, 0, 65527, 0, 0)
 script = ExtResource("14_m42r5")
-
-[node name="ColorRect" type="ColorRect" parent="water"]
-visible = false
-material = SubResource("ShaderMaterial_4jg0p")
-offset_left = 70.0
-offset_top = 59.0
-offset_right = 86.0
-offset_bottom = 63.0
-scale = Vector2(4.56, 5.032)
-
-[node name="PrayStone" parent="." instance=ExtResource("9_7i2ov")]
-position = Vector2(-8, -18)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

@@ -90,7 +90,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y145u")
 }],
-"loop": true,
+"loop": false,
 "name": &"eat",
 "speed": 5.0
 }, {
@@ -476,6 +476,7 @@ script = ExtResource("2_66cru")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(39, 386)
 sprite_frames = SubResource("SpriteFrames_1jw8j")
+autoplay = "default"
 offset = Vector2(-39, -386)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

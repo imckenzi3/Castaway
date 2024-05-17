@@ -1,0 +1,138 @@
+[gd_scene load_steps=13 format=3 uid="uid://cv3r0w3o5bivd"]
+
+[ext_resource type="FontFile" uid="uid://cxpsbmuap30yx" path="res://interaction/interaction area/PixelGameFont.ttf" id="1_btl2w"]
+[ext_resource type="Texture2D" uid="uid://bu5hj1cl3ogd2" path="res://assets/sprites/Crab_idle.png" id="2_t0ft6"]
+[ext_resource type="Script" path="res://scripts/Button.gd" id="3_kmup1"]
+[ext_resource type="PackedScene" uid="uid://cs8sl4774nijq" path="res://scenes/menu_scene.tscn" id="4_sjpew"]
+
+[sub_resource type="FontVariation" id="FontVariation_uuexd"]
+base_font = ExtResource("1_btl2w")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtany"]
+atlas = ExtResource("2_t0ft6")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdj2q"]
+atlas = ExtResource("2_t0ft6")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjd4v"]
+atlas = ExtResource("2_t0ft6")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh4t1"]
+atlas = ExtResource("2_t0ft6")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pik4g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtany")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdj2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjd4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh4t1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="FontVariation" id="FontVariation_gb6hi"]
+base_font = ExtResource("1_btl2w")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l172g"]
+bg_color = Color(0, 0.541176, 0.890196, 0.607843)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.239216, 0.317647, 1)
+border_blend = true
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 1, 1, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.175347
+anchor_top = 0.154321
+anchor_right = 0.824653
+anchor_bottom = 0.401235
+offset_left = -927.0
+offset_top = -250.0
+offset_right = -927.0
+offset_bottom = -250.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.937255, 0.72549, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_uuexd")
+theme_override_font_sizes/font_size = 48
+text = "Cr   bsaway"
+horizontal_alignment = 1
+
+[node name="Logo" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-87, -100)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_pik4g")
+autoplay = "default"
+frame_progress = 0.192439
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(40, 10)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.474392
+anchor_top = 0.473765
+anchor_right = 0.525608
+anchor_bottom = 0.526235
+offset_left = -780.5
+offset_top = -299.0
+offset_right = -732.5
+offset_bottom = -274.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.870588, 0.396078, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_gb6hi")
+theme_override_font_sizes/font_size = 48
+text = "Play
+"
+flat = true
+script = ExtResource("3_kmup1")
+
+[node name="Game" parent="." instance=ExtResource("4_sjpew")]
+z_index = -3
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -122.0
+offset_top = 84.0
+offset_right = -82.0
+offset_bottom = 124.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_l172g")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
