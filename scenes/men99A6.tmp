@@ -146,7 +146,7 @@ horizontal_alignment = 1
 
 [node name="Logo" type="AnimatedSprite2D" parent="CameraPivot/Camera2D"]
 z_index = 1
-position = Vector2(-90.3492, -87.6386)
+position = Vector2(-90, -100)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_pik4g")
 autoplay = "default"
@@ -172,18 +172,6 @@ text = "Play
 "
 flat = true
 script = ExtResource("3_kmup1")
-
-[node name="Label" type="Label" parent="CameraPivot/Camera2D/Button"]
-z_index = -1
-layout_mode = 0
-offset_left = 5.65082
-offset_top = 6.36139
-offset_right = 104.651
-offset_bottom = 73.3614
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_btl2w")
-theme_override_font_sizes/font_size = 48
-text = "Play"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

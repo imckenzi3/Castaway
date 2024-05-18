@@ -32,6 +32,7 @@ func _ready():
 func _eat_fish():
 	self.queue_free() #deletes fish
 	Global.fish += 1
+	# TODO: Fish heals player? TODO
 
 func _physics_process(delta):
 	#var steering: Vector2 = Vector2.ZERO

@@ -10,15 +10,21 @@ config_version=5
 
 [application]
 
-config/name="Castaway"
-run/main_scene="res://scenes/game.tscn"
+config/name="Crabsaway"
+run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0, 1, 0.956863, 1)
+config/icon="res://assets/sprites/crab_sprite.png"
 
 [autoload]
 
 InteractionManager="*res://interaction/interaction area/InteractionManager.tscn"
 DialogManager="*res://scripts/DialogManager.gd"
 Global="*res://scripts/Global.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
 [input]
 
@@ -74,3 +80,4 @@ advance_dialog={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+anti_aliasing/quality/msaa_2d=1
