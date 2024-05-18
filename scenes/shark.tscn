@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://b600163si5j3a"]
+[gd_scene load_steps=19 format=3 uid="uid://b600163si5j3a"]
 
 [ext_resource type="Script" path="res://scripts/shark.gd" id="1_3tu6u"]
 [ext_resource type="Script" path="res://scripts/FishFSM.gd" id="2_hx123"]
 [ext_resource type="Texture2D" uid="uid://c2xxr26rh5o0c" path="res://assets/sprites/shark_sprite.png" id="3_le2cq"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="4_n2pyf"]
+[ext_resource type="AudioStream" uid="uid://drgmu2uf07clm" path="res://assets/sounds/sharkMoving.wav" id="5_pbo2m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jvjhw"]
 atlas = ExtResource("3_le2cq")
@@ -201,6 +202,12 @@ script = ExtResource("4_n2pyf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_no4dl")
+
+[node name="AudioStreamPlayer2D_Walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_pbo2m")
+volume_db = -10.0
+autoplay = true
+max_distance = 200.0
 
 [connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Navigation/PathTimer" to="." method="_on_path_timer_timeout"]

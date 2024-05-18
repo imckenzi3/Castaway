@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player") #ref to player node
 @onready var animated_sprite: AnimatedSprite2D = get_node("AnimatedSprite2D")
 @onready var interaction_area = $InteractionArea # interaction
+@onready var audio_stream_player_2d_eat = $AudioStreamPlayer2D_Eat
 
 @export var speed = 50
 @export var nav_agent: NavigationAgent2D
@@ -32,6 +33,7 @@ func _ready():
 func _eat_fish():
 	self.queue_free() #deletes fish
 	Global.fish += 1
+	audio_stream_player_2d_eat.play()
 	# TODO: Fish heals player? TODO
 
 func _physics_process(delta):

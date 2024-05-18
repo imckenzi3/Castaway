@@ -28,9 +28,6 @@ func _get_transition() -> int:
 		states.hurt:
 			if not animation_player.is_playing():
 				return states.idle
-		states.eat:
-			if not animation_player.is_playing():
-				return states.idle
 	return -1
 
 func _enter_state(_previous_state: int, new_state: int) -> void:

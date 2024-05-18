@@ -8,15 +8,19 @@ extends CharacterBody2D
 const WATER_TRAIL_SCENE: PackedScene = preload("res://scenes/water_trail.tscn")
 @onready var parent: Node2D = get_parent()
 @onready var state_machine: Node = get_node("FiniteStateMachine")
+@onready var audio_stream_player_2d_hurt = $AudioStreamPlayer2D_Hurt
 
 @export var hp: int = 2: set = set_hp
 signal hp_changed(new_hp)
 
 func _physics_process(_delta: float) -> void:
 		var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
+		
 		velocity.x = move_toward(velocity.x, speed * direction.x, accel) 
 		velocity.y = move_toward(velocity.y, speed * direction.y, accel)
+
+			
+		# TODO: Player walking sounds TODO
 		
 		if velocity.x > 0 and anim_sprite.flip_h:
 			anim_sprite.flip_h = false
@@ -33,6 +37,7 @@ func spawn_water() ->void:
 func take_damage(dam: int, dir: Vector2, force: int) -> void:
 	if state_machine.state != state_machine.states.hurt and state_machine.state != state_machine.states.dead:
 		#_spawn_hit_effect() #hit effect
+		audio_stream_player_2d_hurt.play()
 		self.hp -= dam #subtracte hp based on damage
 		frameFreeze(0.1, 0.4) #free frame (time scale, duration)
 		#save hp for next level

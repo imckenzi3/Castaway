@@ -14,6 +14,7 @@ config/name="Crabsaway"
 run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 1, 0.956863, 1)
+boot_splash/image="res://assets/sprites/shark_sprite.png"
 config/icon="res://assets/sprites/crab_sprite.png"
 
 [autoload]
@@ -21,6 +22,10 @@ config/icon="res://assets/sprites/crab_sprite.png"
 InteractionManager="*res://interaction/interaction area/InteractionManager.tscn"
 DialogManager="*res://scripts/DialogManager.gd"
 Global="*res://scripts/Global.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [editor_plugins]
 

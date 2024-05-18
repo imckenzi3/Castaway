@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://xvfh8wog0g6k"]
+[gd_scene load_steps=23 format=3 uid="uid://xvfh8wog0g6k"]
 
 [ext_resource type="Script" path="res://scripts/Fish.gd" id="1_4woua"]
 [ext_resource type="Texture2D" uid="uid://de50qtj2rq7y4" path="res://assets/sprites/world.png" id="2_8py0a"]
 [ext_resource type="Script" path="res://scripts/FishFSM.gd" id="2_lb4k7"]
 [ext_resource type="PackedScene" uid="uid://be0bd56rjbhbj" path="res://interaction/interaction area/interaction_area.tscn" id="3_q7ln6"]
+[ext_resource type="AudioStream" uid="uid://m3lfifcyvyds" path="res://assets/sounds/pickupFish.wav" id="5_qu3cn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5kjsr"]
 atlas = ExtResource("2_8py0a")
@@ -236,6 +237,10 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Aggro/Area2D2"]
 shape = SubResource("CircleShape2D_hk4ka")
+
+[node name="AudioStreamPlayer2D_Eat" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qu3cn")
+bus = &"SFX"
 
 [connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Navigation/PathTimer" to="." method="_on_path_timer_timeout"]

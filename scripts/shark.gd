@@ -17,6 +17,7 @@ const MAX_DISTANCE_TO_PLAYER: int = 80 #max distance to player that robot can be
 const MIN_DISTANCE_TO_PLAYER: int = 40 #min
 
 @onready var hitbox: Area2D = get_node("Hitbox") #var for hitbox
+@onready var audio_stream_player_2d_walk = $AudioStreamPlayer2D_Walk
 
 var randomNum
 var target
@@ -83,6 +84,7 @@ func _on_path_timer_timeout():
 			distance_to_player = (player.position - global_position).length()
 			if distance_to_player > MAX_DISTANCE_TO_PLAYER:
 				_get_path_to_player()
+				audio_stream_player_2d_walk.play()
 	else:
 		get_circle_position(randomNum)
 	
