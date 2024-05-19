@@ -32,16 +32,6 @@ func _physics_process(_delta: float) -> void:
 		elif velocity.x < 0 and not anim_sprite.flip_h:
 			anim_sprite.flip_h = true
 			
-		if Input.is_action_just_pressed("left_click"):
-			click_position = get_global_mouse_position()
-			
-		target_position = (click_position - position).normalized()
-		
-		if position.distance_to(click_position) > 2:
-			target_position = (click_position - position).normalized()
-			velocity = target_position * speed 
-			move_and_slide()
-			
 		move_and_slide()
 	
 
@@ -76,14 +66,3 @@ func frameFreeze(timeScale, duration): #call when you want to freeze "time"
 func set_hp(new_hp: int) -> void:
 	hp = new_hp
 	emit_signal("hp_changed", new_hp)
-	
-#func click_movement():
-		#if Input.is_action_just_pressed("left_click"):
-			#click_position = get_global_mouse_position()
-			#
-		#target_position = (click_position - position).normalized()
-		#
-		#if position.distance_to(click_position) > 2:
-			#target_position = (click_position - position).normalized()
-			#velocity = target_position * speed 
-			#move_and_slide()

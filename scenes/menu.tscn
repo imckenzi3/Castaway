@@ -557,6 +557,7 @@ position = Vector2(224, 30)
 sprite_frames = SubResource("SpriteFrames_ad28w")
 
 [node name="Panel2" type="Panel" parent="CameraPivot"]
+visible = false
 z_index = 2
 anchors_preset = 6
 anchor_left = 1.0

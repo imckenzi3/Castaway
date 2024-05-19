@@ -9,7 +9,6 @@ func _unhandled_input(event):
 	if event.is_action_pressed("zoom_in"):
 		if self.zoom > MAX_ZOOM:
 			self.zoom -= Vector2(0.1, 0.1)
-		print(zoom)
 	if event.is_action_pressed("zoom_out"):
 			self.zoom += Vector2(0.1, 0.1)
 
