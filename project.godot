@@ -18,7 +18,7 @@ boot_splash/image="res://assets/sprites/icedJab_logo768x768_no_tag.png"
 boot_splash/fullsize=false
 config/icon="res://assets/sprites/crab_sprite.png"
 config/windows_native_icon="res://assets/sprites/crab_sprite.png"
-boot_splash/minimum_display_time=4444
+boot_splash/minimum_display_time=3333
 
 [audio]
 

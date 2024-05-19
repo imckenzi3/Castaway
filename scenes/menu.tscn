@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cv3r0w3o5bivd"]
+[gd_scene load_steps=53 format=3 uid="uid://cv3r0w3o5bivd"]
 
 [ext_resource type="FontFile" uid="uid://cxpsbmuap30yx" path="res://interaction/interaction area/PixelGameFont.ttf" id="1_btl2w"]
 [ext_resource type="Texture2D" uid="uid://bu5hj1cl3ogd2" path="res://assets/sprites/Crab_idle.png" id="2_t0ft6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scenes/Button4.gd" id="7_e6ta0"]
 [ext_resource type="Texture2D" uid="uid://de50qtj2rq7y4" path="res://assets/sprites/world.png" id="8_0ncm2"]
 [ext_resource type="Texture2D" uid="uid://ydixsy4iny4h" path="res://assets/sprites/Crab_eat.png" id="10_x2gsg"]
+[ext_resource type="Texture2D" uid="uid://c2xxr26rh5o0c" path="res://assets/sprites/shark_sprite.png" id="11_6g217"]
 [ext_resource type="Texture2D" uid="uid://4jmoj16a6n2b" path="res://assets/sprites/Crab_death.png" id="11_bwv5p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l172g"]
@@ -207,6 +208,21 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tmly3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7ij4"]
+atlas = ExtResource("11_6g217")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mq10d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7ij4")
 }],
 "loop": true,
 "name": &"default",
@@ -474,6 +490,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l172g")
 
 [node name="Label" type="Label" parent="CameraPivot/Panel"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 12.0
 offset_right = 356.0
@@ -540,7 +557,6 @@ position = Vector2(224, 30)
 sprite_frames = SubResource("SpriteFrames_ad28w")
 
 [node name="Panel2" type="Panel" parent="CameraPivot"]
-visible = false
 z_index = 2
 anchors_preset = 6
 anchor_left = 1.0
@@ -556,6 +572,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l172g")
 
 [node name="Label" type="Label" parent="CameraPivot/Panel2"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 4.0
 offset_right = 242.0
@@ -605,6 +622,7 @@ theme_override_font_sizes/font_size = 48
 text = "x"
 
 [node name="Label2" type="Label" parent="CameraPivot/Panel2"]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 20.0
 offset_right = 441.0
@@ -638,10 +656,12 @@ sprite_frames = SubResource("SpriteFrames_xaj86")
 autoplay = "default"
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="CameraPivot/Panel2/Label2"]
-position = Vector2(244, 38)
-sprite_frames = SubResource("SpriteFrames_yvcvc")
+position = Vector2(242, 40)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_mq10d")
 
 [node name="Label" type="Label" parent="CameraPivot/Panel2/Label2/AnimatedSprite2D5"]
+visible = false
 offset_left = -10.0001
 offset_top = -22.0
 offset_right = 89.0001
