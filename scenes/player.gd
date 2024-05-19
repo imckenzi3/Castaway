@@ -14,8 +14,13 @@ const WATER_TRAIL_SCENE: PackedScene = preload("res://scenes/water_trail.tscn")
 @export var hp: int = 2: set = set_hp
 signal hp_changed(new_hp)
 
+var click_position = Vector2()
+var target_position = Vector2()
 # TODO: hunger feature? When player move depleate health very little - player must eat their fish to regain hunger TODO
 
+func _ready() -> void:
+	click_position = Vector2(0,0)
+	
 func _physics_process(_delta: float) -> void:
 		var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		
@@ -27,7 +32,19 @@ func _physics_process(_delta: float) -> void:
 		elif velocity.x < 0 and not anim_sprite.flip_h:
 			anim_sprite.flip_h = true
 			
+		if Input.is_action_just_pressed("left_click"):
+			click_position = get_global_mouse_position()
+			
+		target_position = (click_position - position).normalized()
+		
+		if position.distance_to(click_position) > 2:
+			target_position = (click_position - position).normalized()
+			velocity = target_position * speed 
+			move_and_slide()
+			
 		move_and_slide()
+	
+
 
 func spawn_water() ->void:
 	var water: Sprite2D = WATER_TRAIL_SCENE.instantiate()
@@ -60,3 +77,13 @@ func set_hp(new_hp: int) -> void:
 	hp = new_hp
 	emit_signal("hp_changed", new_hp)
 	
+#func click_movement():
+		#if Input.is_action_just_pressed("left_click"):
+			#click_position = get_global_mouse_position()
+			#
+		#target_position = (click_position - position).normalized()
+		#
+		#if position.distance_to(click_position) > 2:
+			#target_position = (click_position - position).normalized()
+			#velocity = target_position * speed 
+			#move_and_slide()

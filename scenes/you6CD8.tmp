@@ -6,6 +6,15 @@
 [ext_resource type="Script" path="res://scripts/Button2.gd" id="4_4shqk"]
 [ext_resource type="PackedScene" uid="uid://c6csrybmirul1" path="res://scenes/death_scene.tscn" id="5_huq6v"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l172g"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
 [sub_resource type="FontVariation" id="FontVariation_uuexd"]
 base_font = ExtResource("1_ft4qx")
 
@@ -64,7 +73,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 2.0
+"speed": 4.0
 }]
 
 [sub_resource type="FontVariation" id="FontVariation_gb6hi"]
@@ -72,15 +81,6 @@ base_font = ExtResource("1_ft4qx")
 
 [sub_resource type="FontVariation" id="FontVariation_kpsc8"]
 base_font = ExtResource("1_ft4qx")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l172g"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-border_blend = true
 
 [sub_resource type="Animation" id="Animation_txr4d"]
 resource_name = "Cutscene"
@@ -101,11 +101,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CameraPivot/Panel:theme_override_styles/panel:bg_color")
+tracks/1/path = NodePath("Panel:theme_override_styles/panel:bg_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4),
+"times": PackedFloat32Array(0, 2.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.103093)]
@@ -128,7 +128,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CameraPivot/Panel:theme_override_styles/panel:bg_color")
+tracks/1/path = NodePath("Panel:theme_override_styles/panel:bg_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -158,6 +158,24 @@ size_flags_horizontal = 4
 
 [node name="Game" parent="." instance=ExtResource("5_huq6v")]
 z_index = -3
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -494.0
+offset_top = 14.0
+offset_right = -410.0
+offset_bottom = 72.0
+scale = Vector2(6.99508, -5.59814)
+theme_override_styles/panel = SubResource("StyleBoxFlat_l172g")
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = -468.0
+offset_top = 4.0
+offset_right = -384.0
+offset_bottom = 62.0
+scale = Vector2(1.31327, -0.757444)
+theme_override_styles/panel = SubResource("StyleBoxFlat_l172g")
 
 [node name="CameraPivot" type="Node2D" parent="."]
 
@@ -202,9 +220,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -128.5
-offset_top = -10.0
+offset_top = -29.5
 offset_right = 128.5
-offset_bottom = 49.0
+offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -237,9 +255,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -128.5
-offset_top = 90.0
+offset_top = 105.0
 offset_right = 128.5
-offset_bottom = 149.0
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -265,7 +283,6 @@ theme_override_font_sizes/font_size = 48
 text = "Quit"
 
 [node name="Button3" type="Button" parent="CameraPivot/Camera2D"]
-visible = false
 custom_minimum_size = Vector2(40, 10)
 anchors_preset = -1
 anchor_left = 0.474392
@@ -299,33 +316,15 @@ theme_override_font_sizes/font_size = 48
 text = "Credits"
 
 [node name="Label" type="Label" parent="CameraPivot"]
-z_index = 1
-offset_left = -322.0
-offset_top = -88.0683
-offset_right = -73.0
-offset_bottom = -21.0683
+z_index = -1
+offset_left = -526.0
+offset_top = -44.0
+offset_right = -277.0
+offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_ft4qx")
-theme_override_font_sizes/font_size = 14
-text = "Made By: Micester"
-
-[node name="Panel2" type="Panel" parent="CameraPivot"]
-visible = false
-offset_left = -328.0
-offset_top = -60.0683
-offset_right = -228.0
-offset_bottom = -2.0683
-scale = Vector2(1.31327, -0.757444)
-theme_override_styles/panel = SubResource("StyleBoxFlat_l172g")
-
-[node name="Panel" type="Panel" parent="CameraPivot"]
-visible = false
-offset_left = -494.0
-offset_top = 14.0
-offset_right = -410.0
-offset_bottom = 72.0
-scale = Vector2(6.99508, -5.59814)
-theme_override_styles/panel = SubResource("StyleBoxFlat_l172g")
+theme_override_font_sizes/font_size = 48
+text = "Play Again"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

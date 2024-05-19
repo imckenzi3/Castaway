@@ -1,12 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://cv3r0w3o5bivd"]
+[gd_scene load_steps=50 format=3 uid="uid://cv3r0w3o5bivd"]
 
 [ext_resource type="FontFile" uid="uid://cxpsbmuap30yx" path="res://interaction/interaction area/PixelGameFont.ttf" id="1_btl2w"]
 [ext_resource type="Texture2D" uid="uid://bu5hj1cl3ogd2" path="res://assets/sprites/Crab_idle.png" id="2_t0ft6"]
 [ext_resource type="Script" path="res://scripts/Button.gd" id="3_kmup1"]
 [ext_resource type="PackedScene" uid="uid://cs8sl4774nijq" path="res://scenes/menu_scene.tscn" id="4_sjpew"]
+[ext_resource type="Script" path="res://scripts/Button4.gd" id="5_n4w2v"]
+[ext_resource type="Script" path="res://scripts/Button2.gd" id="5_ng6x3"]
+[ext_resource type="Script" path="res://scenes/Button3.gd" id="7_cayvl"]
+[ext_resource type="Script" path="res://scenes/Button4.gd" id="7_e6ta0"]
+[ext_resource type="Texture2D" uid="uid://de50qtj2rq7y4" path="res://assets/sprites/world.png" id="8_0ncm2"]
+[ext_resource type="Texture2D" uid="uid://ydixsy4iny4h" path="res://assets/sprites/Crab_eat.png" id="10_x2gsg"]
+[ext_resource type="Texture2D" uid="uid://4jmoj16a6n2b" path="res://assets/sprites/Crab_death.png" id="11_bwv5p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l172g"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.803922, 0.721569, 0.701961, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -55,6 +62,199 @@ animations = [{
 
 [sub_resource type="FontVariation" id="FontVariation_gb6hi"]
 base_font = ExtResource("1_btl2w")
+
+[sub_resource type="FontVariation" id="FontVariation_rf1dj"]
+base_font = ExtResource("1_btl2w")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75dpe"]
+atlas = ExtResource("8_0ncm2")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nnf4b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75dpe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irjil"]
+atlas = ExtResource("8_0ncm2")
+region = Rect2(64, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_au08u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irjil")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48dpn"]
+atlas = ExtResource("8_0ncm2")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ypxk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48dpn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rvnb"]
+atlas = ExtResource("8_0ncm2")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ad28w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rvnb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7exlw"]
+atlas = ExtResource("8_0ncm2")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yvcvc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7exlw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dltc8"]
+atlas = ExtResource("2_t0ft6")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yskx2"]
+atlas = ExtResource("2_t0ft6")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62h3o"]
+atlas = ExtResource("2_t0ft6")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3yey"]
+atlas = ExtResource("2_t0ft6")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xaj86"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dltc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yskx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62h3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3yey")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xclfo"]
+atlas = ExtResource("10_x2gsg")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybxx1"]
+atlas = ExtResource("10_x2gsg")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhda0"]
+atlas = ExtResource("10_x2gsg")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmly3"]
+atlas = ExtResource("10_x2gsg")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7y2wa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xclfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybxx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhda0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmly3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4cfn"]
+atlas = ExtResource("11_bwv5p")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt577"]
+atlas = ExtResource("11_bwv5p")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p84i"]
+atlas = ExtResource("11_bwv5p")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xugw4"]
+atlas = ExtResource("11_bwv5p")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8plu"]
+atlas = ExtResource("11_bwv5p")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e1psp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4cfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gt577")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8p84i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xugw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8plu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_txr4d"]
 resource_name = "Cutscene"
@@ -187,6 +387,277 @@ theme_override_fonts/font = ExtResource("1_btl2w")
 theme_override_font_sizes/font_size = 48
 text = "Play"
 
+[node name="Button4" type="Button" parent="CameraPivot/Camera2D"]
+custom_minimum_size = Vector2(40, 10)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = 55.0
+offset_right = 38.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.870588, 0.396078, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_rf1dj")
+theme_override_font_sizes/font_size = 48
+text = "How to Play"
+flat = true
+alignment = 0
+script = ExtResource("5_n4w2v")
+
+[node name="Label" type="Label" parent="CameraPivot/Camera2D/Button4"]
+z_index = -1
+layout_mode = 0
+offset_left = 5.65082
+offset_top = 6.36139
+offset_right = 104.651
+offset_bottom = 73.3614
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_btl2w")
+theme_override_font_sizes/font_size = 48
+text = "How to Play"
+
+[node name="Button3" type="Button" parent="CameraPivot/Camera2D"]
+custom_minimum_size = Vector2(40, 10)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = 105.0
+offset_right = 17.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.870588, 0.396078, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_rf1dj")
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+flat = true
+alignment = 0
+script = ExtResource("5_ng6x3")
+
+[node name="Label" type="Label" parent="CameraPivot/Camera2D/Button3"]
+z_index = -1
+layout_mode = 0
+offset_left = 5.65082
+offset_top = 6.36139
+offset_right = 104.651
+offset_bottom = 73.3614
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_btl2w")
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[node name="Panel" type="Panel" parent="CameraPivot"]
+visible = false
+z_index = 2
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -294.0
+offset_top = -166.0
+offset_right = 71.0
+offset_bottom = -120.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l172g")
+
+[node name="Label" type="Label" parent="CameraPivot/Panel"]
+offset_left = 8.0
+offset_top = 12.0
+offset_right = 356.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(1, 0.556863, 0.494118, 1)
+theme_override_fonts/font = ExtResource("1_btl2w")
+theme_override_font_sizes/font_size = 32
+text = "Controls:     = move"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Button4" type="Button" parent="CameraPivot/Panel/Label"]
+z_index = 3
+custom_minimum_size = Vector2(40, 10)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 166.0
+offset_top = -75.0
+offset_right = 423.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.870588, 0.396078, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_rf1dj")
+theme_override_font_sizes/font_size = 48
+text = "x"
+flat = true
+alignment = 0
+script = ExtResource("7_e6ta0")
+
+[node name="Label" type="Label" parent="CameraPivot/Panel/Label/Button4"]
+z_index = -1
+layout_mode = 0
+offset_left = 5.99994
+offset_top = 4.0
+offset_right = 105.0
+offset_bottom = 71.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_btl2w")
+theme_override_font_sizes/font_size = 48
+text = "x"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CameraPivot/Panel"]
+position = Vector2(210, 16)
+sprite_frames = SubResource("SpriteFrames_nnf4b")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CameraPivot/Panel"]
+position = Vector2(196, 30)
+sprite_frames = SubResource("SpriteFrames_au08u")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="CameraPivot/Panel"]
+position = Vector2(210, 30)
+sprite_frames = SubResource("SpriteFrames_5ypxk")
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="CameraPivot/Panel"]
+position = Vector2(224, 30)
+sprite_frames = SubResource("SpriteFrames_ad28w")
+
+[node name="Panel2" type="Panel" parent="CameraPivot"]
+visible = false
+z_index = 2
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -294.0
+offset_top = -90.0
+offset_right = 72.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l172g")
+
+[node name="Label" type="Label" parent="CameraPivot/Panel2"]
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 242.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(1, 0.556863, 0.494118, 1)
+theme_override_fonts/font = ExtResource("1_btl2w")
+theme_override_font_sizes/font_size = 32
+text = "How to play:"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Button3" type="Button" parent="CameraPivot/Panel2"]
+z_index = 3
+custom_minimum_size = Vector2(40, 10)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 167.0
+offset_top = -120.0
+offset_right = 424.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.870588, 0.396078, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_rf1dj")
+theme_override_font_sizes/font_size = 48
+text = "x"
+flat = true
+alignment = 0
+script = ExtResource("7_cayvl")
+
+[node name="Label" type="Label" parent="CameraPivot/Panel2/Button3"]
+z_index = -1
+layout_mode = 0
+offset_left = 5.99994
+offset_top = 4.0
+offset_right = 105.0
+offset_bottom = 71.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_btl2w")
+theme_override_font_sizes/font_size = 48
+text = "x"
+
+[node name="Label2" type="Label" parent="CameraPivot/Panel2"]
+offset_left = 22.0
+offset_top = 20.0
+offset_right = 441.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_btl2w")
+theme_override_font_sizes/font_size = 16
+text = "          +      =                         +      ="
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CameraPivot/Panel2/Label2"]
+position = Vector2(72, 38)
+sprite_frames = SubResource("SpriteFrames_yvcvc")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CameraPivot/Panel2/Label2"]
+position = Vector2(20, 39)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_xaj86")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="CameraPivot/Panel2/Label2"]
+position = Vector2(122, 39)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7y2wa")
+autoplay = "default"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="CameraPivot/Panel2/Label2"]
+position = Vector2(194, 39)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_xaj86")
+autoplay = "default"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="CameraPivot/Panel2/Label2"]
+position = Vector2(244, 38)
+sprite_frames = SubResource("SpriteFrames_yvcvc")
+
+[node name="Label" type="Label" parent="CameraPivot/Panel2/Label2/AnimatedSprite2D5"]
+offset_left = -10.0001
+offset_top = -22.0
+offset_right = 89.0001
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0.980392, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_btl2w")
+theme_override_font_sizes/font_size = 48
+text = "x"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="CameraPivot/Panel2/Label2"]
+position = Vector2(298, 39)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_e1psp")
+autoplay = "default"
+frame_progress = 0.959535
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_rtact")
@@ -194,3 +665,7 @@ libraries = {
 autoplay = "Cutscene"
 
 [connection signal="pressed" from="CameraPivot/Camera2D/Button" to="CameraPivot/Camera2D/Button" method="_on_pressed"]
+[connection signal="pressed" from="CameraPivot/Camera2D/Button4" to="CameraPivot/Camera2D/Button4" method="_on_pressed"]
+[connection signal="pressed" from="CameraPivot/Camera2D/Button3" to="CameraPivot/Camera2D/Button3" method="_on_pressed"]
+[connection signal="pressed" from="CameraPivot/Panel/Label/Button4" to="CameraPivot/Panel/Label/Button4" method="_on_pressed"]
+[connection signal="pressed" from="CameraPivot/Panel2/Button3" to="CameraPivot/Panel2/Button3" method="_on_pressed"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://b23kc04r1p2dm"]
+[gd_scene load_steps=35 format=3 uid="uid://b23kc04r1p2dm"]
 
 [ext_resource type="PackedScene" uid="uid://jhhbpy6gmgnn" path="res://scenes/player.tscn" id="1_40psa"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_j4d18"]
 [ext_resource type="Texture2D" uid="uid://de50qtj2rq7y4" path="res://assets/sprites/world.png" id="2_gfoxb"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="3_djsdj"]
 [ext_resource type="Texture2D" uid="uid://dtlgakk3h56eo" path="res://assets/sprites/water_fill.png" id="3_nwynu"]
+[ext_resource type="Script" path="res://scripts/Camera2D.gd" id="3_o8rud"]
 [ext_resource type="Texture2D" uid="uid://ccsgos60nlpuh" path="res://assets/sprites/water_rising.png" id="4_uelhg"]
 [ext_resource type="Script" path="res://scripts/TileMap.gd" id="5_kmj1j"]
 [ext_resource type="Texture2D" uid="uid://bkhxqb5hfx0ws" path="res://assets/sprites/water_top.png" id="5_ov1of"]
@@ -412,9 +413,8 @@ z_index = 3
 position = Vector2(3, 13)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-visible = false
-position = Vector2(0, -30)
-zoom = Vector2(4, 4)
+zoom = Vector2(2.5, 2.5)
+script = ExtResource("3_o8rud")
 
 [node name="Node2D" parent="Player" instance=ExtResource("13_raw8m")]
 position = Vector2(-3, -13)
@@ -448,7 +448,7 @@ rotation = 2.9516
 [node name="Marker2D" type="Marker2D" parent="Player/SharkPath2D/PathFollow2D"]
 
 [node name="Score" parent="Player" instance=ExtResource("16_xy7kj")]
-position = Vector2(-138, -102)
+position = Vector2(-222, -122)
 
 [node name="island" type="TileMap" parent="."]
 material = SubResource("ShaderMaterial_vxcnq")
