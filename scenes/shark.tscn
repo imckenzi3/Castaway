@@ -198,6 +198,7 @@ libraries = {
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("4_n2pyf")
+knockback_force = 650
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-0.5, -0.5)
@@ -208,6 +209,7 @@ stream = ExtResource("5_pbo2m")
 volume_db = -10.0
 autoplay = true
 max_distance = 200.0
+bus = &"SFX"
 
 [connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Navigation/PathTimer" to="." method="_on_path_timer_timeout"]

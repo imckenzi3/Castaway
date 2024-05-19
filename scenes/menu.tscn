@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cs8sl4774nijq" path="res://scenes/menu_scene.tscn" id="4_sjpew"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l172g"]
-bg_color = Color(0, 0.541176, 0.890196, 0.607843)
+bg_color = Color(0, 0, 0, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -111,11 +111,13 @@ z_index = -3
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
+z_index = 2
 layout_mode = 0
-offset_left = -126.0
-offset_top = 78.0
-offset_right = -42.0
-offset_bottom = 136.0
+offset_left = -576.0
+offset_top = 250.0
+offset_right = -492.0
+offset_bottom = 308.0
+scale = Vector2(13.8297, -9.78917)
 theme_override_styles/panel = SubResource("StyleBoxFlat_l172g")
 
 [node name="CameraPivot" type="Node2D" parent="."]

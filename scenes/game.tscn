@@ -448,7 +448,7 @@ rotation = 2.9516
 [node name="Marker2D" type="Marker2D" parent="Player/SharkPath2D/PathFollow2D"]
 
 [node name="Score" parent="Player" instance=ExtResource("16_xy7kj")]
-position = Vector2(-146, -92)
+position = Vector2(-138, -102)
 
 [node name="island" type="TileMap" parent="."]
 material = SubResource("ShaderMaterial_vxcnq")

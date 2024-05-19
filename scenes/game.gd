@@ -1,8 +1,7 @@
 extends Node2D
 
 var fish = preload("res://scenes/fish.tscn")
-var shark = preload("res://scenes/shark.tscn")
-
+var shark = preload("res://scenes/shark.tscn")	
 func _init() -> void:
 	randomize()
 
@@ -24,3 +23,4 @@ func _on_timer_2_timeout():
 	var instance2 = shark.instantiate()
 	instance2.global_position = $Player/SharkPath2D/PathFollow2D/Marker2D.global_position
 	add_child(instance2)
+#

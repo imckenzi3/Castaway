@@ -25,16 +25,17 @@ var wander_angle: float = 0
 
 func _ready():
 	interaction_area.interact = Callable(self, "_eat_fish")
-	
 	home_pos = self.global_position
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
 	
-func _eat_fish():
-	self.queue_free() #deletes fish
+func _eat_fish():	
 	Global.fish += 1
-	audio_stream_player_2d_eat.play()
-	# TODO: Fish heals player? TODO
+	audio_stream_player_2d_eat.play() #eats fish when player gets on top 
+	
+	self.queue_free() #deletes fish
+	# TODO: Fish pick up sounds effects TODO
+	# TODO: Player eat animations??? TODO
 
 func _physics_process(delta):
 	#var steering: Vector2 = Vector2.ZERO
@@ -82,12 +83,8 @@ func _on_path_timer_timeout():
 				#wander_steering()
 			if distance_to_player < MIN_DISTANCE_TO_PLAYER:
 				_get_path_to_move_away_from_player()
-				_eat_fish() #eats fish when player gets on top
-				
+				_eat_fish()
 							#play player eating animation
-				
-				#if the enemy is not too close or too far away
-				#check if can_attack is true
 	else:
 		move_direction = Vector2.ZERO
 
@@ -102,7 +99,7 @@ func _get_path_to_player() -> void:
 #player entered
 func _on_area_2d_area_entered(area):
 	target_node = area.owner
-	#
+	
 #player exited
 func _on_area_2d_2_area_exited(area):
 	if area.owner == target_node:

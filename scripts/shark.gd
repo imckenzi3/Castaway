@@ -82,11 +82,11 @@ func move(target, delta) -> void:
 func _on_path_timer_timeout():
 	if is_instance_valid(player):
 			distance_to_player = (player.position - global_position).length()
-			if distance_to_player > MAX_DISTANCE_TO_PLAYER:
+			if distance_to_player != MAX_DISTANCE_TO_PLAYER:
 				_get_path_to_player()
 				audio_stream_player_2d_walk.play()
-	else:
-		get_circle_position(randomNum)
+	#else:
+		#get_circle_position(randomNum)
 	
 func _get_path_to_player() -> void: 
 	nav_agent.target_position = player.position #path to player

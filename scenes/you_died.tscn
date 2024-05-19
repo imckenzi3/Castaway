@@ -1,0 +1,281 @@
+[gd_scene load_steps=18 format=3 uid="uid://dndcgggqdyk0h"]
+
+[ext_resource type="FontFile" uid="uid://cxpsbmuap30yx" path="res://interaction/interaction area/PixelGameFont.ttf" id="1_ft4qx"]
+[ext_resource type="Texture2D" uid="uid://4jmoj16a6n2b" path="res://assets/sprites/Crab_death.png" id="3_h2ydb"]
+[ext_resource type="Script" path="res://scripts/Button.gd" id="3_tlhyw"]
+[ext_resource type="Script" path="res://scripts/Button2.gd" id="4_4shqk"]
+[ext_resource type="PackedScene" uid="uid://c6csrybmirul1" path="res://scenes/death_scene.tscn" id="5_huq6v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l172g"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="FontVariation" id="FontVariation_uuexd"]
+base_font = ExtResource("1_ft4qx")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7tlx"]
+atlas = ExtResource("3_h2ydb")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apucs"]
+atlas = ExtResource("3_h2ydb")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwh0x"]
+atlas = ExtResource("3_h2ydb")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6olk5"]
+atlas = ExtResource("3_h2ydb")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5eh8"]
+atlas = ExtResource("3_h2ydb")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pik4g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7tlx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apucs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwh0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6olk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5eh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5eh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5eh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5eh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5eh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5eh8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="FontVariation" id="FontVariation_gb6hi"]
+base_font = ExtResource("1_ft4qx")
+
+[sub_resource type="Animation" id="Animation_txr4d"]
+resource_name = "Cutscene"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(428, 226), Vector2(440, 8), Vector2(22, 222)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.103093)]
+}
+
+[sub_resource type="Animation" id="Animation_otdyl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraPivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtact"]
+_data = {
+"Cutscene": SubResource("Animation_txr4d"),
+"RESET": SubResource("Animation_otdyl")
+}
+
+[node name="YouDied" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+
+[node name="Game" parent="." instance=ExtResource("5_huq6v")]
+z_index = -3
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -494.0
+offset_top = 14.0
+offset_right = -410.0
+offset_bottom = 72.0
+scale = Vector2(6.99508, -5.59814)
+theme_override_styles/panel = SubResource("StyleBoxFlat_l172g")
+
+[node name="CameraPivot" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CameraPivot"]
+position = Vector2(-199.651, -148.361)
+zoom = Vector2(4, 4)
+
+[node name="Label" type="Label" parent="CameraPivot/Camera2D"]
+anchors_preset = -1
+anchor_left = 0.175347
+anchor_top = 0.154321
+anchor_right = 0.824653
+anchor_bottom = 0.401235
+offset_left = -240.0
+offset_top = -140.0
+offset_right = 18.0
+offset_bottom = -89.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.937255, 0.72549, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_uuexd")
+theme_override_font_sizes/font_size = 48
+text = "You Di   D"
+horizontal_alignment = 1
+
+[node name="Logo" type="AnimatedSprite2D" parent="CameraPivot/Camera2D"]
+z_index = 1
+position = Vector2(123.651, -87.639)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_pik4g")
+autoplay = "default"
+frame = 9
+frame_progress = 1.0
+
+[node name="Button" type="Button" parent="CameraPivot/Camera2D"]
+custom_minimum_size = Vector2(40, 10)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.5
+offset_top = -29.5
+offset_right = 128.5
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.870588, 0.396078, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_gb6hi")
+theme_override_font_sizes/font_size = 48
+text = "Play Again
+"
+flat = true
+script = ExtResource("3_tlhyw")
+
+[node name="Label" type="Label" parent="CameraPivot/Camera2D/Button"]
+z_index = -1
+layout_mode = 0
+offset_left = 5.65082
+offset_top = 6.36139
+offset_right = 104.651
+offset_bottom = 73.3614
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ft4qx")
+theme_override_font_sizes/font_size = 48
+text = "Play Again"
+
+[node name="Button2" type="Button" parent="CameraPivot/Camera2D"]
+custom_minimum_size = Vector2(40, 10)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.5
+offset_top = 50.0
+offset_right = 128.5
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.870588, 0.396078, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_gb6hi")
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+flat = true
+alignment = 0
+script = ExtResource("4_4shqk")
+
+[node name="Label" type="Label" parent="CameraPivot/Camera2D/Button2"]
+z_index = -1
+layout_mode = 0
+offset_left = 5.65082
+offset_top = 6.36139
+offset_right = 104.651
+offset_bottom = 73.3614
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ft4qx")
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rtact")
+}
+autoplay = "Cutscene"
+
+[connection signal="pressed" from="CameraPivot/Camera2D/Button" to="CameraPivot/Camera2D/Button" method="_on_pressed"]
+[connection signal="pressed" from="CameraPivot/Camera2D/Button2" to="CameraPivot/Camera2D/Button2" method="_on_pressed"]

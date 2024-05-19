@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ccigqimsy8tua"
+path="res://.godot/imported/Meadow Thoughts.ogg-7d748d556fbfa7ad6fa6ed6cacc87f1f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Meadow Thoughts.ogg"
+dest_files=["res://.godot/imported/Meadow Thoughts.ogg-7d748d556fbfa7ad6fa6ed6cacc87f1f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

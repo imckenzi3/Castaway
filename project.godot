@@ -16,6 +16,11 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 1, 0.956863, 1)
 boot_splash/image="res://assets/sprites/shark_sprite.png"
 config/icon="res://assets/sprites/crab_sprite.png"
+config/windows_native_icon="res://assets/sprites/crab_sprite.png"
+
+[audio]
+
+buses/default_bus_layout="res://assets/sounds/default_bus_layout.tres"
 
 [autoload]
 
