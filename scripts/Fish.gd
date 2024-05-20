@@ -31,11 +31,10 @@ func _ready():
 	
 func _eat_fish():	
 	Global.fish += 1
-	audio_stream_player_2d_eat.play() #eats fish when player gets on top 
+	player.audio_stream_player_2d_eat.play() #eats fish when player gets on top 
 	
 	self.queue_free() #deletes fish
 	# TODO: Fish pick up sounds effects TODO
-	# TODO: Player eat animations??? TODO
 
 func _physics_process(delta):
 	#var steering: Vector2 = Vector2.ZERO
@@ -54,7 +53,7 @@ func _physics_process(delta):
 		
 		var axis = to_local(nav_agent.get_next_path_position()).normalized()
 		velocity = axis * speed
-
+		
 		move_and_slide()
 	
 func recalc_path():
