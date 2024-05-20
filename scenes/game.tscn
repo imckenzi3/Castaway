@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b23kc04r1p2dm"]
+[gd_scene load_steps=37 format=3 uid="uid://b23kc04r1p2dm"]
 
 [ext_resource type="PackedScene" uid="uid://jhhbpy6gmgnn" path="res://scenes/player.tscn" id="1_40psa"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_j4d18"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://chwr3h0fpxbxy" path="res://scenes/hunger_bar.tscn" id="6_5eeaq"]
 [ext_resource type="Texture2D" uid="uid://b67fjt8abdowm" path="res://assets/sprites/water_top_slightly_wavy.png" id="6_jfp5e"]
 [ext_resource type="Texture2D" uid="uid://dcg3261hbr083" path="res://assets/sprites/water_bottom_slightly_wavy.png" id="8_v4c8q"]
+[ext_resource type="Script" path="res://scripts/DecorationsTiles.gd" id="9_kq3q7"]
 [ext_resource type="PackedScene" uid="uid://cbeucc4bypb0" path="res://scenes/waterShimmer.tscn" id="13_raw8m"]
 [ext_resource type="Script" path="res://scripts/waterTileMap.gd" id="14_m42r5"]
 [ext_resource type="PackedScene" uid="uid://ccgn0fnpse3qw" path="res://scenes/score.tscn" id="16_xy7kj"]
@@ -312,6 +313,12 @@ texture = ExtResource("2_gfoxb")
 5:1/0 = 0
 5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:1/0/physics_layer_0/angular_velocity = 0.0
+5:2/0 = 0
+5:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:2/0/physics_layer_0/angular_velocity = 0.0
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_4ilyj"]
 physics_layer_0/collision_layer = 1
@@ -465,6 +472,7 @@ script = ExtResource("5_kmj1j")
 tile_set = SubResource("TileSet_4ilyj")
 format = 2
 layer_0/tile_data = PackedInt32Array(65530, 131072, 3, -65541, 262144, 2, -196601, 262144, 2, -8, 262144, 2, 65532, 262144, 2, 65543, 262144, 2, -131067, 196608, 2, 3, 262144, 2, 65541, 262144, 2)
+script = ExtResource("9_kq3q7")
 
 [node name="water" type="TileMap" parent="."]
 z_index = 1
