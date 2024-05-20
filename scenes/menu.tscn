@@ -112,15 +112,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3rvnb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0tyy"]
 atlas = ExtResource("8_0ncm2")
-region = Rect2(64, 80, 16, 16)
+region = Rect2(48, 96, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ad28w"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3rvnb")
+"texture": SubResource("AtlasTexture_h0tyy")
 }],
 "loop": true,
 "name": &"default",
@@ -581,7 +581,7 @@ offset_bottom = 55.0
 theme_override_colors/font_color = Color(1, 0.556863, 0.494118, 1)
 theme_override_fonts/font = ExtResource("1_btl2w")
 theme_override_font_sizes/font_size = 32
-text = "How to play:"
+text = "How to play:  = eat"
 vertical_alignment = 1
 uppercase = true
 
@@ -661,23 +661,16 @@ position = Vector2(242, 40)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_mq10d")
 
-[node name="Label" type="Label" parent="CameraPivot/Panel2/Label2/AnimatedSprite2D5"]
-visible = false
-offset_left = -10.0001
-offset_top = -22.0
-offset_right = 89.0001
-offset_bottom = 45.0
-theme_override_colors/font_color = Color(0.980392, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_btl2w")
-theme_override_font_sizes/font_size = 48
-text = "x"
-
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="CameraPivot/Panel2/Label2"]
 position = Vector2(298, 39)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_e1psp")
 autoplay = "default"
 frame_progress = 0.959535
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="CameraPivot/Panel2/Label2"]
+position = Vector2(229, 4)
+sprite_frames = SubResource("SpriteFrames_ad28w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

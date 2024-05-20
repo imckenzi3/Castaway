@@ -10,13 +10,13 @@ const WATER_TRAIL_SCENE: PackedScene = preload("res://scenes/water_trail.tscn")
 @onready var state_machine: Node = get_node("FiniteStateMachine")
 @onready var audio_stream_player_2d_hurt = $AudioStreamPlayer2D_Hurt
 @onready var audio_stream_player_2d_dead = $AudioStreamPlayer2D_Dead
+@onready var audio_stream_player_2d_eat = $AudioStreamPlayer2D_Eat
 
 @export var hp: int = 2: set = set_hp
 signal hp_changed(new_hp)
 
 var click_position = Vector2()
 var target_position = Vector2()
-# TODO: hunger feature? When player move depleate health very little - player must eat their fish to regain hunger TODO
 
 func _ready() -> void:
 	click_position = Vector2(0,0)
@@ -31,10 +31,8 @@ func _physics_process(_delta: float) -> void:
 			anim_sprite.flip_h = false
 		elif velocity.x < 0 and not anim_sprite.flip_h:
 			anim_sprite.flip_h = true
-			
+		_eat_fish()
 		move_and_slide()
-	
-
 
 func spawn_water() ->void:
 	var water: Sprite2D = WATER_TRAIL_SCENE.instantiate()
@@ -46,7 +44,7 @@ func take_damage(dam: int, dir: Vector2, force: int) -> void:
 		audio_stream_player_2d_hurt.play()
 		self.hp -= dam #subtracte hp based on damage
 		frameFreeze(0.1, 0.4) #free frame (time scale, duration)
-
+		
 		#player damaged here
 		if hp > 0:
 			state_machine.set_state(state_machine.states.hurt)
@@ -56,6 +54,11 @@ func take_damage(dam: int, dir: Vector2, force: int) -> void:
 			state_machine.set_state(state_machine.states.dead)
 			audio_stream_player_2d_dead.play()
 			velocity += dir * force * 2
+			
+		#if Global.hunger == 0:
+			#state_machine.set_state(state_machine.states.dead)
+			#audio_stream_player_2d_dead.play()
+			#velocity += dir * force * 2
 
 func frameFreeze(timeScale, duration): #call when you want to freeze "time"
 	Engine.time_scale = timeScale
@@ -66,3 +69,19 @@ func frameFreeze(timeScale, duration): #call when you want to freeze "time"
 func set_hp(new_hp: int) -> void:
 	hp = new_hp
 	emit_signal("hp_changed", new_hp)
+
+func _on_timer_timeout():
+	Global.hunger -= 1
+	
+	if Global.hunger == 0:
+		state_machine.set_state(state_machine.states.dead)
+
+func _eat_fish():
+	if Input.is_action_just_pressed("eat"):
+		if Global.fish > 0:
+			Global.fish -= 1 #remove fish 
+			Global.hunger += 5 #add food to hunger
+			audio_stream_player_2d_eat.play()
+			anim_sprite.play("eat")
+			await anim_sprite.animation_finished
+	

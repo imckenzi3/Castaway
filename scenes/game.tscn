@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b23kc04r1p2dm"]
+[gd_scene load_steps=36 format=3 uid="uid://b23kc04r1p2dm"]
 
 [ext_resource type="PackedScene" uid="uid://jhhbpy6gmgnn" path="res://scenes/player.tscn" id="1_40psa"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_j4d18"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ccsgos60nlpuh" path="res://assets/sprites/water_rising.png" id="4_uelhg"]
 [ext_resource type="Script" path="res://scripts/TileMap.gd" id="5_kmj1j"]
 [ext_resource type="Texture2D" uid="uid://bkhxqb5hfx0ws" path="res://assets/sprites/water_top.png" id="5_ov1of"]
+[ext_resource type="PackedScene" uid="uid://chwr3h0fpxbxy" path="res://scenes/hunger_bar.tscn" id="6_5eeaq"]
 [ext_resource type="Texture2D" uid="uid://b67fjt8abdowm" path="res://assets/sprites/water_top_slightly_wavy.png" id="6_jfp5e"]
 [ext_resource type="Texture2D" uid="uid://dcg3261hbr083" path="res://assets/sprites/water_bottom_slightly_wavy.png" id="8_v4c8q"]
 [ext_resource type="PackedScene" uid="uid://cbeucc4bypb0" path="res://scenes/waterShimmer.tscn" id="13_raw8m"]
@@ -449,6 +450,9 @@ rotation = 2.9516
 
 [node name="Score" parent="Player" instance=ExtResource("16_xy7kj")]
 position = Vector2(-222, -122)
+
+[node name="HungerBar" parent="Player" instance=ExtResource("6_5eeaq")]
+position = Vector2(-222, -100)
 
 [node name="island" type="TileMap" parent="."]
 material = SubResource("ShaderMaterial_vxcnq")
